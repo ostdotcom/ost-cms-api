@@ -66,5 +66,8 @@ module CompanyApi
     }
     config.cache_store = :dalli_store, memcache_instance, memcache_options
 
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
   end
 end
