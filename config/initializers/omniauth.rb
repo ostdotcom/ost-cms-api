@@ -6,6 +6,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                                  ssl: {
                                      ca_file: Rails.root.join("cacert.pem").to_s
                                  }
-                             }
+                             },
+                             redirect_uri: 'https://securedhost.com:8443/auth/google_oauth2/callback'
                          }
 end
