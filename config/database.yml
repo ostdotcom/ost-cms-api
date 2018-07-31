@@ -5,10 +5,10 @@ default: &default
   encoding: utf8
   collation: utf8_unicode_ci
   reconnect: true
-  username: pepo
-  password: pepo123
+  username: root
+  password: mayur123
   host: 127.0.0.1
 
 <%= Rails.env%>:
   <<: *default
-  database: ost_cms_<%= Rails.env%>
+  database: ost_cms_development

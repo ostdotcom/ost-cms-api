@@ -1,74 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Google Auth Example App</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div>
-  <% puts current_user.inspect %>
-  <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <hr />
-      <% current_user.attributes.each do |k, v| %>
-          <b><%= k %>:</b> <%= v %> <br>
-      <% end %>
-  <% else %>
-      <ul>
-        <li><a href='/auth/google_oauth2'>Sign in with Google</a></li>
-        <li><a href='#' class="googleplus-login">Sign in with Google via AJAX</a></li>
-      </ul>
-  <% end %>
-</div>
-<div>
-  <%= yield %>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script>
+  <head>
+    <title>GoogleOmniauthTutorial</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
     jQuery(function() {
-        return $.ajax({
-            url: 'https://apis.google.com/js/client:plus.js?onload=gpAsyncInit',
-            dataType: 'script',
-            cache: true
-        });
+      return $.ajax({
+        url: 'https://apis.google.com/js/client:plus.js?onload=gpAsyncInit',
+        dataType: 'script',
+        cache: true
+      });
     });
 
     window.gpAsyncInit = function() {
+      gapi.auth.authorize({
+        immediate: true,
+        response_type: 'code',
+        cookie_policy: 'single_host_origin',
+        client_id: '1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com',
+        scope: 'email profile'
+      }, function(response) {
+        return;
+      });
+      $('.googleplus-login').click(function(e) {
+        e.preventDefault();
         gapi.auth.authorize({
-            immediate: true,
-            response_type: 'code',
-            cookie_policy: 'single_host_origin',
-            client_id: '1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com',
-            scope: 'email profile'
+          immediate: false,
+          response_type: 'code',
+          cookie_policy: 'single_host_origin',
+          client_id: '1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com',
+          scope: 'email profile'
         }, function(response) {
-            return;
-        });
-        $('.googleplus-login').click(function(e) {
-            e.preventDefault();
-            gapi.auth.authorize({
-                immediate: false,
-                response_type: 'code',
-                cookie_policy: 'single_host_origin',
-                client_id: '1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com',
-                scope: 'email profile'
-            }, function(response) {
-                delete response['g-oauth-window'];
-                if (response && !response.error) {
-                    // google authentication succeed, now post data to server.
-                    jQuery.ajax({type: 'POST', url: '/auth/google_oauth2/callback', data: response,
-                        success: function(data) {
-                            console.log(data)
-                        }
-                    });
-                } else {
-                    console.log('google authentication failed!', response)
-                }
+          console.log("response", response);
+          delete response['g-oauth-window'];
+          if (response && !response.error) {
+            // google authentication succeed, now post data to server.
+            jQuery.ajax({type: 'GET', url: '/auth/google_oauth2/callback', data: response,
+              success: function(data) {
+                console.log(data)
+              }
             });
+          } else {
+            console.log('google authentication failed!', response)
+          }
         });
+      });
     };
-</script>
-</body>
+  </script>
 </html>
