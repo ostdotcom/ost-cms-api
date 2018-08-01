@@ -12,4 +12,21 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def getuser
+    if user_signed_in?
+      user = {
+          success: true,
+          data: current_user
+      }
+    else
+      user = {
+          success: false,
+          err: {
+              code: 'temp'
+          }
+      }
+    end
+    render json: user.to_json
+  end
+
 end
