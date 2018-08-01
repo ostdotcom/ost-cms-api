@@ -6,7 +6,7 @@ default: &default
   collation: utf8_unicode_ci
   reconnect: true
   username: root
-  password: mayur123
+  password: root
   host: 127.0.0.1
 
 <%= Rails.env%>:
