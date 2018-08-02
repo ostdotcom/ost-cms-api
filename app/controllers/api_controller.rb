@@ -1,19 +1,10 @@
 class ApiController < ApplicationController
   def user_profile
     if user_signed_in?
-      if is_whitelisted?
-        user = {
-            success: true,
-            data: current_user
-        }
-      else
-        user = {
-            success: false,
-            err:{
-              code: 'not_whitelisted_user'
-            }
-        }
-      end
+      user = {
+          success: true,
+          data: current_user
+      }
     else
       user = {
           success: false,
