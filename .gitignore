@@ -23,3 +23,6 @@ Gemfile.lock
 
 db/schema.rb
 doc/
+
+localhost.crt
+localhost.key

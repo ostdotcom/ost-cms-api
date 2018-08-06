@@ -1,220 +1,44 @@
 meta:
-    #:news_list_:
     :news_list_header:
         :data_kind: text
         :validations:
             :required: true
             :minLength: null
             :maxLength: 20
-        :data_key_name: header
+        :data_key_name: news_list_header
     :news_list_title:
         :data_kind: text
         :validations:
             :required: true
             :minLength: null
             :maxLength: 500
-        :data_key_name: title
+        :data_key_name: news_list_title
     :news_list_description:
         :data_kind: text
         :validations:
             :required: false
             :minLength: null
             :maxLength: 100
-        :data_key_name: desc
+        :data_key_name: news_list_description
     :news_list_image:
         :data_kind: url
         :validations:
             :required: true
             :minLength: null
             :maxLength: null
-        :data_key_name: image
+        :data_key_name: news_list_image
     :news_list_article_link:
         :data_kind: url
         :validations:
             :required: true
             :minLength: null
             :maxLength: null
-        :data_key_name: link
+        :data_key_name: news_list_article_link
     :news_list_date:
         :data_kind: date
         :validations:
             :required: true
             :minLength: null
             :maxLength: null
-        :data_key_name: date
-    :core_team_members_ol:
-        :name:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: name
-        :title:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: title
-        :image:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: image
-        :linkedIn:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: linkedIn
-        :twitter:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: twitter
-        :medium:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: medium
-        :description:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: description
-    :extended_team_ol: null
-    :early_backers_ol: null
-    :security_auditors_ol: null
-    :partner_companies_ol:
-        :name:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: name
-        :categories:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: categories
-        :size:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: size
-        :on_hover_bgcolor:
-            :data_kind: color
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: on_hover_bgcolor
-        :on_hover_imgcolor:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: on_hover_imgcolor
-        :sprite_index:
-            :data_kind: number
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: sprite_index
-        :has_exited:
-            :data_kind: boolean
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: has_exited
-        :description_html:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: description_html
-        :location:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: location
-        :website:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: website
-        :founders:
-            name:
-                :data_kind: text
-                :validations:
-                    :required: true
-                    :minLength: null
-                    :maxLength: null
-                :data_key_name: null
-        :social:
-            name:
-                :data_kind: url
-                :validations:
-                    :required: true
-                    :minLength: null
-                    :maxLength: null
-                :data_key_name: null
-            :link:
-                :data_kind: url
-                :validations:
-                    :required: true
-                    :minLength: null
-                    :maxLength: null
-                :data_key_name: null
-    :jobs_ol:
-        :location:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: null
-        :profile:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: null
-        :profile_link:
-            :data_kind: url
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: null
-        :description:
-            :data_kind: text
-            :validations:
-                :required: true
-                :minLength: null
-                :maxLength: null
-            :data_key_name: null
+        :data_key_name: news_list_date
+

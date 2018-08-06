@@ -21,8 +21,6 @@ class ApiController < ApplicationController
 
   def read_yml_config
     config = YAML.load_file('config/api_config.yml')
-    puts '-------- reading yml file ----------'
-    puts config["meta"][:news_list_header][:validations]
     render json: config.to_json
   end
 
