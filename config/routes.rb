@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   scope 'api', controller: 'api' do
     get '/login', to: redirect('/auth/google_oauth2'), as: 'login'
     get '/user/profile' => :user_profile, as: 'user_profile'
+    get '/entity_data' => :entity_data
+    get '/read_yml_config' => :read_yml_config
   end
 
 

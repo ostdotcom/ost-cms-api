@@ -1,0 +1,2 @@
+class EntityDataVersion < ApplicationRecord
+end

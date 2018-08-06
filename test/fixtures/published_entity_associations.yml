@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  associations: MyText
+  environment: MyString
+  created_at: 2018-08-03 17:25:06
+  updated_at: 2018-08-03 17:25:06
+
+two:
+  associations: MyText
+  environment: MyString
+  created_at: 2018-08-03 17:25:06
+  updated_at: 2018-08-03 17:25:06

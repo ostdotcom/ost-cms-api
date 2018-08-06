@@ -1,0 +1,2 @@
+class PublishedEntityAssociation < ApplicationRecord
+end
