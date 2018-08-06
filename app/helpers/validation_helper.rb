@@ -1,9 +1,10 @@
 module ValidationHelper
   class ValidationClass
-    def validate(validations, input)
-      puts "I am in validations"
-      puts validations
-      puts input
+    def validate(fieldName, input)
+      fieldName = :news_list_header
+      config_yaml = YAML.load_file('config/api_config.yml')
+      puts config_yaml["meta"][fieldName][:validations]
+      config_yaml
     end
 
   end

@@ -20,7 +20,11 @@ class ApiController < ApplicationController
 
 
   def read_yml_config
-    config = YAML.load_file('config/api_config.yml')
+    config_yaml = YAML.load_file('config/api_config.yml')
+    config = {
+        success: true,
+        data: config_yaml
+    }
     render json: config.to_json
   end
 
@@ -29,6 +33,10 @@ class ApiController < ApplicationController
     status = {success: true}
     puts "I am in entity data"
     render json: status.to_json
+  end
+
+
+  def create_data
 
   end
 

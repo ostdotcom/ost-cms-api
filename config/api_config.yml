@@ -6,6 +6,7 @@ meta:
             :minLength: null
             :maxLength: 20
         :data_key_name: news_list_header
+        :section: news_list
     :news_list_title:
         :data_kind: text
         :validations:
@@ -13,6 +14,7 @@ meta:
             :minLength: null
             :maxLength: 500
         :data_key_name: news_list_title
+        :section: news_list
     :news_list_description:
         :data_kind: text
         :validations:
@@ -20,6 +22,7 @@ meta:
             :minLength: null
             :maxLength: 100
         :data_key_name: news_list_description
+        :section: news_list
     :news_list_image:
         :data_kind: url
         :validations:
@@ -27,6 +30,7 @@ meta:
             :minLength: null
             :maxLength: null
         :data_key_name: news_list_image
+        :section: news_list
     :news_list_article_link:
         :data_kind: url
         :validations:
@@ -34,6 +38,7 @@ meta:
             :minLength: null
             :maxLength: null
         :data_key_name: news_list_article_link
+        :section: news_list
     :news_list_date:
         :data_kind: date
         :validations:
@@ -41,4 +46,5 @@ meta:
             :minLength: null
             :maxLength: null
         :data_key_name: news_list_date
+        :section: news_list
 

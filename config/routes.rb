@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/user' => :user_profile, as: 'user_profile'
     get '/entity_data' => :entity_data
     get '/configs' => :read_yml_config
+    post '/create' => :create_data
   end
 
 
