@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post '/delete' => :delete_data
     post '/publish' => :publish_data
     get '/published' => :get_published_data
+    get '/active' => :get_active_data
   end
 
 

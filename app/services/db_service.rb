@@ -52,4 +52,18 @@ class DbService
     }
   end
 
+
+  def self.get_active(request)
+    active_list = []
+    entity_id = request.GET["entity_id"]
+    entities = EntityDataVersion.where(["status = '0'","entity_id = '"+ entity_id +"'"])
+    entities.each do |entity|
+      active_list.push({id: entity.id, record: entity.data})
+    end
+    {
+        success: true,
+        data: active_list
+    }
+  end
+
 end

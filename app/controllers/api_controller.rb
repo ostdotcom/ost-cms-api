@@ -61,4 +61,10 @@ class ApiController < ApplicationController
     data = DbService.get_published_data(request)
     render json: data.to_json
   end
+
+
+  def get_active_data
+    data = DbService.get_active(request)
+    render json: data.to_json
+  end
 end
