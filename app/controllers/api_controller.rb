@@ -31,13 +31,34 @@ class ApiController < ApplicationController
   def entity_data
     ValidationHelper::ValidationClass.new.validate({required: true}, "Abcd");
     status = {success: true}
-    puts "I am in entity data"
     render json: status.to_json
   end
 
 
   def create_data
-
+    status = DbService.create_data_version(request)
+    render json: status.to_json
   end
 
+  def edit_data
+    status = DbService.edit_data_version(request)
+    render json: status.to_json
+  end
+
+
+  def delete_data
+    status = DbService.delete_data_version(request)
+    render json: status.to_json
+  end
+
+  def publish_data
+    status = DbService.publish_data(request)
+    render json: status.to_json
+  end
+
+
+  def get_published_data
+    data = DbService.get_published_data(request)
+    render json: data.to_json
+  end
 end

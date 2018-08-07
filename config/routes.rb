@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get '/entity_data' => :entity_data
     get '/configs' => :read_yml_config
     post '/create' => :create_data
+    post '/edit'   => :edit_data
+    post '/delete' => :delete_data
+    post '/publish' => :publish_data
+    get '/published' => :get_published_data
   end
 
 
