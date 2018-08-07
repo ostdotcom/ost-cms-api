@@ -15,6 +15,7 @@ class ApiController < ApplicationController
           }
       }
     end
+
     render json: user.to_json
   end
 
@@ -36,35 +37,36 @@ class ApiController < ApplicationController
 
 
   def create_data
-    status = DbService.create_data_version(request)
-    render json: status.to_json
+    puts "create data"
+    service_response = DbService::Create.new(params).perform
+    render_api_response(service_response)
   end
 
   def edit_data
-    status = DbService.edit_data_version(request)
-    render json: status.to_json
+    service_response = DbService::Edit.new(params).perform
+    render_api_response(service_response)
   end
 
 
   def delete_data
-    status = DbService.delete_data_version(request)
-    render json: status.to_json
+    service_response = DbService::Delete.new(params).perform
+    render_api_response(service_response)
   end
 
   def publish_data
-    status = DbService.publish_data(request)
-    render json: status.to_json
+    service_response = DbService::Publish.new(params).perform
+    render_api_response(service_response)
   end
 
 
   def get_published_data
-    data = DbService.get_published_data(request)
-    render json: data.to_json
+    service_response = DbService::Get.new(params).get_published
+    render_api_response(service_response)
   end
 
 
   def get_active_data
-    data = DbService.get_active(request)
-    render json: data.to_json
+    service_response = DbService::Get.new(params).get_active
+    render_api_response(service_response)
   end
 end

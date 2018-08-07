@@ -1,12 +1,4 @@
 meta:
-    :news_list_header:
-        :data_kind: text
-        :validations:
-            :required: true
-            :minLength: null
-            :maxLength: 20
-        :data_key_name: news_list_header
-        :section: news_list
     :news_list_title:
         :data_kind: text
         :validations:
