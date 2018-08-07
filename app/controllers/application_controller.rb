@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   helper_method :current_user
-  #prepend_around_action :handle_exceptions_gracefully
+  prepend_around_action :handle_exceptions_gracefully
   before_action :sanitize_params
 
   after_action :set_response_headers
