@@ -68,6 +68,11 @@ class ApiController < ApplicationController
     render_api_response(service_response)
   end
 
+  def sort_data
+    service_response = DbService::Sort.new(params).perform
+    render_api_response(service_response)
+  end
+
   def user_auth
     if !user_signed_in?
       r = Result::Base.error(

@@ -83,14 +83,14 @@ module DbService
 
 
     def minlength(validation, input)
-      error_msg = "This field mush have minimum of "+ validation.to_s + " length"
+      error_msg = "This field must have minimum "+ validation.to_s + " characters"
       if validation && input.length < validation && input.length != 0
          error_msg
       end
     end
 
     def maxlength(validation, input)
-      error_msg = "This field must have maximum of "+ validation.to_s + " length"
+      error_msg = "This field must have maximum "+ validation.to_s + " characters"
       if validation && input.length > validation
          error_msg
       end

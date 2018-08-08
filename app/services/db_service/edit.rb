@@ -14,6 +14,7 @@ module DbService
       data = @params
       id = data["id"]
       data.delete("id")
+      data.delete("entity_id")
       entity = EntityDataVersion.find_by_id(id)
       entity.status = 2
       entity.save
