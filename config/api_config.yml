@@ -4,7 +4,6 @@ meta:
         :validations:
             :required: true
             :minlength: 10
-            :maxlength: 100
             :maxlength: 80
         :data_key_name: news_list_title
         :section: news_list
@@ -34,11 +33,6 @@ meta:
         :data_kind: date
         :validations:
             :required: true
-<<<<<<< HEAD
-            #:minlength: null
-            #:maxlength: 2083
-=======
->>>>>>> 2042e63a11cae9002a3aa76e9e8fa56e53ef3636
         :data_key_name: news_list_date
         :section: news_list
 
