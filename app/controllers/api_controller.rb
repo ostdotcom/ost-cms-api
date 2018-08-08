@@ -63,6 +63,11 @@ class ApiController < ApplicationController
     render_api_response(service_response)
   end
 
+  def get_record
+    service_response = DbService::Get.new(params).get_record
+    render_api_response(service_response)
+  end
+
   def user_auth
     if !user_signed_in?
       r = Result::Base.error(

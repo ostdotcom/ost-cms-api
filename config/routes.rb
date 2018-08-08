@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post '/publish' => :publish_data
     get '/published' => :get_published_data
     get '/active' => :get_active_data
+    get '/record' => :get_record
   end
 
 

@@ -29,6 +29,21 @@ module DbService
       Result::Base.success(data: {entity_id: entity_id, list: active_list})
     end
 
+    def get_record
+      data = @params
+      id = data["id"]
+      record = EntityDataVersion.where("id = '"+ id +"'").first
+      if record
+        Result::Base.success(data: {id: id, record: record.data})
+      else
+        Result::Base.error(
+            {
+                error: 'no_record_found',
+                error_display_text: 'No record found'
+            }
+        )
+      end
+    end
 
   end
 end
