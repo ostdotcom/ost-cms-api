@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :user_auth
 
   def user_profile
     if user_signed_in?
@@ -29,15 +30,7 @@ class ApiController < ApplicationController
     render json: config.to_json
   end
 
-  def entity_data
-    ValidationHelper::ValidationClass.new.validate({required: true}, "Abcd");
-    status = {success: true}
-    render json: status.to_json
-  end
-
-
   def create_data
-    puts "create data"
     service_response = DbService::Create.new(params).perform
     render_api_response(service_response)
   end
@@ -68,5 +61,22 @@ class ApiController < ApplicationController
   def get_active_data
     service_response = DbService::Get.new(params).get_active
     render_api_response(service_response)
+  end
+
+  def user_auth
+    if !user_signed_in?
+      r = Result::Base.error(
+          {
+              error: 'user_not_authenticated',
+              error_message: 'User is not authenticated',
+              error_data: {},
+              error_action: GlobalConstant::ErrorAction.default,
+              error_display_text: 'User is not authenticated.',
+              error_display_heading: 'Error',
+              data: {}
+          }
+      )
+      render_api_response(r)
+    end
   end
 end

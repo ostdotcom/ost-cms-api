@@ -3,40 +3,40 @@ meta:
         :data_kind: text
         :validations:
             :required: true
-            :minLength: null
-            :maxLength: 500
+            :minlength: 10
+            :maxlength: 100
         :data_key_name: news_list_title
         :section: news_list
     :news_list_description:
         :data_kind: text
         :validations:
             :required: false
-            :minLength: null
-            :maxLength: 100
+            :minlength: 50
+            :maxlength: 500
         :data_key_name: news_list_description
         :section: news_list
     :news_list_image:
         :data_kind: url
         :validations:
             :required: true
-            :minLength: null
-            :maxLength: null
+            #:minLength: null
+            #:maxLength: null
         :data_key_name: news_list_image
         :section: news_list
     :news_list_article_link:
         :data_kind: url
         :validations:
             :required: true
-            :minLength: null
-            :maxLength: null
+            :minlength: 3
+            :maxlength: 2083
         :data_key_name: news_list_article_link
         :section: news_list
     :news_list_date:
         :data_kind: date
         :validations:
             :required: true
-            :minLength: null
-            :maxLength: null
+            #:minlength: null
+            #:maxlength: 2083
         :data_key_name: news_list_date
         :section: news_list
 

@@ -15,7 +15,7 @@ module DbService
         entity = EntityDataVersion.where( "id = '"+ element.to_s() +"'").first
         published_list.push({record: entity.data, id:entity.id})
       end
-      Result::Base.success(data:published_list)
+      Result::Base.success(data: {entity_id: entity_id, list: published_list})
     end
 
     def get_active
@@ -26,7 +26,7 @@ module DbService
       entities.each do |entity|
         active_list.push({id: entity.id, record: entity.data})
       end
-      Result::Base.success(data:active_list)
+      Result::Base.success(data: {entity_id: entity_id, list: active_list})
     end
 
 

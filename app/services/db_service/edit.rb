@@ -7,7 +7,10 @@ module DbService
     end
 
     def perform
-      validate
+      r = validate
+      if ! r.success?
+        return r
+      end
       data = @params
       id = data["id"]
       data.delete("id")

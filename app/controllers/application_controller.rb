@@ -28,9 +28,6 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     # converts current_user to a boolean by negating the negation
-    puts "Current users"
-    puts session[:user_id]
-    puts current_user
     !!current_user
   end
 
