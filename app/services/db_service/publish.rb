@@ -1,6 +1,8 @@
 module DbService
   class Publish < Base
 
+    include ::Util::ResultHelper
+
     def initialize(params)
       super(params)
       puts params
@@ -17,7 +19,7 @@ module DbService
         ordered_array.push(entity.id)
       end
       PublishedEntityAssociation.create(associations: ordered_array, environment:"DEV", entity_id:entity_id)
-      Result::Base.success(data:{})
+      success
     end
 
 

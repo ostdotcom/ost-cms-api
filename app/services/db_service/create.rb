@@ -1,6 +1,8 @@
 module DbService
   class Create < Base
 
+    include ::Util::ResultHelper
+
     def initialize(params)
       super(params)
       puts params
@@ -13,10 +15,11 @@ module DbService
       end
       data = @params
       entity_id =  data["entity_id"]
+      data.delete("id")
       data.delete("entity_id")
       weight = OrderWeights.new.get_new_record_weight(entity_id)
       created_record = EntityDataVersion.create(data: data, order_weight:weight, entity_id: entity_id, status: 0)
-      Result::Base.success(data: created_record.data)
+      success_with_data(created_record.data)
     end
 
 

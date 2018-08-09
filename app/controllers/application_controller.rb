@@ -18,14 +18,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def is_whitelisted?
-
-   if ! is_whitelisted
-     session[:user_id] = nil
-   end
-   is_whitelisted
-  end
-
   def user_signed_in?
     # converts current_user to a boolean by negating the negation
     !!current_user
@@ -65,7 +57,8 @@ class ApplicationController < ActionController::Base
           {
               error: 'swr',
               error_message: 'Something Went Wrong',
-              data: params
+              data: params,
+              http_code: GlobalConstant::ErrorCode.internal_server_error
           }
       )
       render_api_response(r)

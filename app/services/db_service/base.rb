@@ -1,6 +1,8 @@
 module DbService
   class Base
 
+    include ::Util::ResultHelper
+
     def initialize(params)
       params.delete("controller")
       params.delete("action")
@@ -38,20 +40,18 @@ module DbService
         end
       end
       if is_error
-        Result::Base.error(
-            {
-                error: 'validations_error',
-                error_message: 'validations_error',
-                error_data: error_object,
-                error_action: GlobalConstant::ErrorAction.default,
-                error_display_text: 'Validation Errors',
-                display_text: 'Validation Errors',
-                error_display_heading: 'Error',
-                data: {}
-            }
+
+        error_with_data(
+            'validations_error',
+            'Validation Errors',
+            'Validation Errors',
+              GlobalConstant::ErrorAction.default,
+            {},
+             error_object,
+            GlobalConstant::ErrorCode.bad_request
         )
       else
-        Result::Base.success({})
+        success
       end
 
 

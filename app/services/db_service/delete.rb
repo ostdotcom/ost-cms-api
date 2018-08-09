@@ -1,6 +1,8 @@
 module DbService
   class Delete < Base
 
+    include ::Util::ResultHelper
+
     def initialize(params)
       super(params)
       puts params
@@ -12,7 +14,7 @@ module DbService
       entity_to_delete = EntityDataVersion.find_by_id(id)
       entity_to_delete.status = 1
       entity_to_delete.save
-      Result::Base.success(data:{})
+      success
     end
 
 

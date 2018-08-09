@@ -1,6 +1,8 @@
 module DbService
   class Edit < Base
 
+    include ::Util::ResultHelper
+
     def initialize(params)
       super(params)
       puts params
@@ -19,7 +21,7 @@ module DbService
       entity.status = 2
       entity.save
       created_record = EntityDataVersion.create(data: data, order_weight: entity[:order_weight], entity_id: entity[:entity_id], status: 0)
-      Result::Base.success(data: created_record.data)
+      success_with_data(created_record.data)
     end
 
 
