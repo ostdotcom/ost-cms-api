@@ -37,6 +37,7 @@ module Util
 
     def self.is_a_hash?(obj)
       obj.is_a?(Hash) || obj.is_a?(ActionController::Parameters)
+      true
     end
 
 

@@ -1,33 +1,31 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
   before_action :user_auth
+
+  include ::Util::ResultHelper
 
   def user_profile
     if user_signed_in?
-      user = {
-          success: true,
-          data: current_user
-      }
+      response = success_with_data(current_user.attributes)
     else
-      user = {
-          success: false,
-          err: {
-              code: 'auth_error'
-          }
-      }
+      response = error_with_data(
+          'user_not_authenticated',
+          'User is not authenticated',
+          '',
+          GlobalConstant::ErrorAction.default,
+          {},
+          error_object,
+          GlobalConstant::ErrorCode.unauthorized_access
+      )
     end
-
-    render json: user.to_json
+    render_api_response(response)
   end
 
 
   def read_yml_config
     config_yaml = YAML.load_file('config/api_config.yml')
-    config = {
-        success: true,
-        data: config_yaml
-    }
-    render json: config.to_json
+    response = success_with_data(config_yaml)
+    render_api_response(response)
   end
 
   def create_data
@@ -75,16 +73,15 @@ class ApiController < ApplicationController
 
   def user_auth
     if !user_signed_in?
-      r = Result::Base.error(
-          {
-              error: 'user_not_authenticated',
-              error_message: 'User is not authenticated',
-              error_data: {},
-              error_action: GlobalConstant::ErrorAction.default,
-              error_display_text: 'User is not authenticated.',
-              error_display_heading: 'Error',
-              data: {}
-          }
+      r = error_with_data(
+
+              'user_not_authenticated',
+              'User is not authenticated',
+               '',
+               GlobalConstant::ErrorAction.default,
+               {},
+              {},
+              GlobalConstant::ErrorCode.unauthorized_access
       )
       render_api_response(r)
     end

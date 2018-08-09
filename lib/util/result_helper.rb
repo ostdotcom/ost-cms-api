@@ -29,7 +29,8 @@ module Util
     def success_with_data(data)
       # Allow only Hash data to pass ahead
       data = {} unless Util::CommonValidator.is_a_hash?(data)
-
+      puts '~~~~~~!!!!!!!!!!!!data!!!!!!!!!!!~~~~~~~~~~~ '
+      puts data
       Result::Base.success({
                                data: data
                            })

@@ -1,34 +1,27 @@
 Rails.application.routes.draw do
 
   scope 'auth', controller: 'sessions' do
-    get '/:provider/callback' => :create
-    get '/logout' => :destroy, as: 'destroy'
+    match '/:provider/callback' => :create, via: [:GET]
+    match '/logout' => :destroy, as: 'destroy', via: [:GET]
     get '/failure', to: redirect('/')
   end
 
   scope 'api', controller: 'api' do
-    get '/login', to: redirect('/auth/google_oauth2'), as: 'login'
-    get '/user' => :user_profile, as: 'user_profile'
-    get '/entity_data' => :entity_data
-    get '/configs' => :read_yml_config
-    post '/create' => :create_data
-    post '/edit'   => :edit_data
-    post '/delete' => :delete_data
-    post '/publish' => :publish_data
-    get '/published' => :get_published_data
-    get '/active' => :get_active_data
-    get '/record' => :get_record
+    #GET requests
+    match '/user' => :user_profile, as: 'user_profile', via: [:GET]
+    match '/entity_data' => :entity_data, via: [:GET]
+    match '/configs' => :read_yml_config, via: [:GET]
+    match '/published' => :get_published_data, via: [:GET]
+    match '/active' => :get_active_data, via: [:GET]
+    match '/record' => :get_record, via: [:GET]
+    #POST requests
+    match '/create' => :create_data, via: [:POST]
+    match '/edit'   => :edit_data, via: [:POST]
+    match '/delete' => :delete_data, via: [:POST]
+    match '/publish' => :publish_data, via: [:POST]
   end
 
 
 
-  #get 'api/login', to: redirect('/auth/google_oauth2'), as: 'login'
- # get 'api/logout', to: 'sessions#destroy', as: 'logout'
- # get 'api/user/profile', to: 'sessions#getuser', as: 'getuser'
-  #get 'auth/:provider/callback', to: 'sessions#create'
-
-  #get 'home', to: 'home#show'
-  #get 'dashboard', to: redirect('/dashboard')
-  #root to: "home#show"
 
 end
