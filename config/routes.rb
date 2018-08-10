@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     match '/edit'   => :edit_data, via: [:POST]
     match '/delete' => :delete_data, via: [:POST]
     match '/publish' => :publish_data, via: [:POST]
+    match '/sort' => :sort_data, via: [:POST]
   end
 
 

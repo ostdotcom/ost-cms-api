@@ -20,16 +20,15 @@ module DbService
         next_entity = EntityDataVersion.where([  "id = '"+next_id+"'" ,"status = '0'", "entity_id = '"+ entity_id +"'"]).first
       end
       if ! next_entity
-        next_entity = EntityDataVersion.where([  "order_weight > '"+ prev_entity +"'" ,"status = '0'", "entity_id = '"+ entity_id +"'"]).order(:order_weight).first
+        next_entity = EntityDataVersion.where([  "order_weight > "+ prev_entity.order_weight  ,"status = '0'", "entity_id = '"+ entity_id +"'"]).order(:order_weight).first
       elsif ! prev_entity
-        prev_entity = EntityDataVersion.where([  "order_weight > '"+ prev_entity +"'" ,"status = '0'", "entity_id = '"+ entity_id +"'"]).order(:order_weight).first
+        prev_entity = EntityDataVersion.where([  "order_weight < "+ next_entity.order_weight  ,"status = '0'", "entity_id = '"+ entity_id +"'"]).order(:order_weight).last
       end
-      order_weight = (prev_entity.order_weight + next_entity.next_entity) / 2
+      order_weight = (prev_entity.order_weight + next_entity.order_weight) / 2
 
       entity.order_weight = order_weight
       entity.save
-      created_record = EntityDataVersion.create(data: data, order_weight: entity[:order_weight], entity_id: entity[:entity_id], status: 0)
-      Result::Base.success(data: created_record.data)
+      success
     end
 
 
