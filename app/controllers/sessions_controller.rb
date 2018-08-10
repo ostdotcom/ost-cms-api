@@ -2,8 +2,9 @@
 class SessionsController < ApplicationController
 
   def create
+    # some logic to check whitelist
     auth = request.env["omniauth.auth"]
-    if is_whitelist?(auth.info.email)
+    if is_whitelist(auth.info.email)
       @user = User.find_or_create_from_auth_hash(auth)
       session[:user_id] = @user.id
       redirect_page = "/dashboard"
@@ -20,9 +21,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def is_whitelist?(user_email)
-    # Logic to check whitelist
-    @whitelisted_users = ["mayur@ost.com", "akshay@ost.com"]
+  def is_whitelist(user_email)
+    @whitelisted_users = ["mayur@ost.com", "akshay@ost.com", "preshita@ost.com"]
     @whitelisted_users.include? user_email
   end
 end
