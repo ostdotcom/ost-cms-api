@@ -25,7 +25,7 @@ module DbService
       active_list = []
       data = @params
       entity_id = data["entity_id"]
-      entities = EntityDataVersion.where(["status = '0'","entity_id = '"+ entity_id +"'"]).order(:order_weight)
+      entities = EntityDataVersion.where(["status = '0'", "status = '1'", "entity_id = '"+ entity_id +"'"]).order(:order_weight)
       entities.each do |entity|
         active_list.push({id: entity.id, record: entity.data})
       end
