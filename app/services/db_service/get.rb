@@ -5,7 +5,6 @@ module DbService
 
     def initialize(params)
       super(params)
-      puts params
     end
 
     def get_published
@@ -13,9 +12,11 @@ module DbService
       data = @params
       entity_id = data["entity_id"]
       published_data = PublishedEntityAssociation.where("entity_id = '"+ entity_id +"'").last
+      if published_data
       published_data.associations.each do |element|
         entity = EntityDataVersion.where( "id = '"+ element.to_s() +"'").first
         published_list.push({record: entity.data, id:entity.id})
+      end
       end
       success_with_data({entity_id: entity_id, list: published_list})
     end

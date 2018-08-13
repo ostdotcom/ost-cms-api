@@ -8,8 +8,6 @@ module Sanitizer
   #
   def sanitize_params_recursively(passed_param)
 
-    puts "In sanitize_params_recursively"
-    puts passed_param
     if passed_param.is_a? String
       # if the passed_param is a string, sanitize it directly to remove script tags etc
       passed_param = Sanitize.fragment(passed_param.to_s).gsub("`", "&#x60;")

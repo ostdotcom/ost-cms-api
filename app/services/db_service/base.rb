@@ -3,11 +3,12 @@ module DbService
 
     include ::Util::ResultHelper
 
-    def initialize(params)
+    def initialize(params, current_user=nil)
       params.delete("controller")
       params.delete("action")
       params = clean(params)
       @params = params
+      @user_id = current_user && current_user.id
     end
 
     def clean(params)

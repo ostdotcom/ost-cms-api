@@ -3,9 +3,8 @@ module DbService
 
     include ::Util::ResultHelper
 
-    def initialize(params)
-      super(params)
-      puts params
+    def initialize(params, user)
+      super(params, user)
     end
 
     def perform
@@ -20,7 +19,7 @@ module DbService
       entity = EntityDataVersion.find_by_id(id)
       entity.status = 2
       entity.save
-      created_record = EntityDataVersion.create(data: data, order_weight: entity[:order_weight], entity_id: entity[:entity_id], status: 0)
+      created_record = EntityDataVersion.create(data: data, order_weight: entity[:order_weight], entity_id: entity[:entity_id], status: 0,  user_id: @user_id)
       success_with_data(created_record.data)
     end
 

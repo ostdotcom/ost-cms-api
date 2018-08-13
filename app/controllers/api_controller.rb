@@ -29,23 +29,23 @@ class ApiController < ApplicationController
   end
 
   def create_data
-    service_response = DbService::Create.new(params).perform
+    service_response = DbService::Create.new(params, @current_user).perform
     render_api_response(service_response)
   end
 
   def edit_data
-    service_response = DbService::Edit.new(params).perform
+    service_response = DbService::Edit.new(params, @current_user).perform
     render_api_response(service_response)
   end
 
 
   def delete_data
-    service_response = DbService::Delete.new(params).perform
+    service_response = DbService::Delete.new(params, @current_user).perform
     render_api_response(service_response)
   end
 
   def publish_data
-    service_response = DbService::Publish.new(params).perform
+    service_response = DbService::Publish.new(params, @current_user).perform
     render_api_response(service_response)
   end
 
@@ -67,7 +67,7 @@ class ApiController < ApplicationController
   end
 
   def sort_data
-    service_response = DbService::Sort.new(params).perform
+    service_response = DbService::Sort.new(params, @current_user).perform
     render_api_response(service_response)
   end
 

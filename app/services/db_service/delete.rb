@@ -3,9 +3,8 @@ module DbService
 
     include ::Util::ResultHelper
 
-    def initialize(params)
-      super(params)
-      puts params
+    def initialize(params, user)
+      super(params, user)
     end
 
     def perform

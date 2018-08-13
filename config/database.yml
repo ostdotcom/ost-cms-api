@@ -11,4 +11,4 @@ default: &default
 
 <%= Rails.env%>:
   <<: *default
-  database: ost_cms_development
+  database: ost_cms2_development

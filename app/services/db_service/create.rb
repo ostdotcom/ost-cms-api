@@ -3,13 +3,14 @@ module DbService
 
     include ::Util::ResultHelper
 
-    def initialize(params)
-      super(params)
-      puts params
+    def initialize(params, user)
+      super(params, user)
     end
 
-    def perform
+    def perform()
       r = validate
+
+
       if ! r.success?
         return r
       end
@@ -18,7 +19,7 @@ module DbService
       data.delete("id")
       data.delete("entity_id")
       weight = OrderWeights.new.get_new_record_weight(entity_id)
-      created_record = EntityDataVersion.create(data: data, order_weight:weight, entity_id: entity_id, status: 0)
+      created_record = EntityDataVersion.create(data: data, order_weight:weight, entity_id: entity_id, status: 0, user_id: @user_id)
       success_with_data(created_record.data)
     end
 

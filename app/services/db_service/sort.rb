@@ -1,8 +1,8 @@
 module DbService
   class Sort < Base
 
-    def initialize(params)
-      super(params)
+    def initialize(params, user)
+      super(params, user)
     end
 
     def perform

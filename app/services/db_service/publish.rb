@@ -3,9 +3,8 @@ module DbService
 
     include ::Util::ResultHelper
 
-    def initialize(params)
-      super(params)
-      puts params
+    def initialize(params, user)
+      super(params, user)
     end
 
     def perform
@@ -18,7 +17,7 @@ module DbService
       entities.each do |entity|
         ordered_array.push(entity.id)
       end
-      PublishedEntityAssociation.create(associations: ordered_array, environment:"DEV", entity_id:entity_id)
+      PublishedEntityAssociation.create(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
       success
     end
 
