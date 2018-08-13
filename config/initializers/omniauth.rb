@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, "1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com", "RNlmeLP8mMYonNoBw-X8GpvD",
-           redirect_uri: 'https://securedhost.com/auth/google_oauth2/callback',
+  provider :google_oauth2, GlobalConstant::Base.oauth[:key], GlobalConstant::Base.oauth[:secret],
+           redirect_uri: GlobalConstant::Base.root_url + GlobalConstant::Base.oauth[:auth_callback_route],
            provider_ignores_state: true
 end

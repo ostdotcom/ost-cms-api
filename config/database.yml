@@ -5,10 +5,10 @@ default: &default
   encoding: utf8
   collation: utf8_unicode_ci
   reconnect: true
-  username: root
-  password: mayur123
-  host: 127.0.0.1
+  username: <%= ENV['OCA_DEFAULT_DB_USER']%>
+  password: <%= ENV['OCA_DEFAULT_DB_PASSWORD']%>
+  host: <%= ENV['OCA_DEFAULT_DB_HOST']%>
 
-<%= Rails.env%>:
+<%= Rails.env %>:
   <<: *default
-  database: ost_cms2_development
+  database: ost_cms_<%= Rails.env %>
