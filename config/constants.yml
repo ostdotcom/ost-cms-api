@@ -1,0 +1,13 @@
+constants:
+  root_url: <%= ENV['OCA_BASE_URL']%>
+
+  cms_api:
+    whitelisted_users: <%= ENV['OCA_WHITELISTED_USERS']%>
+    auth_success_route: '/go-to-dashboard'
+    auth_failure_route: '/?err=not_whitelisted'
+
+  oauth:
+    auth_callback_route: '/auth/google_oauth2/callback'
+    key: <%= ENV['OCA_GOOGLE_AUTH_KEY']%>
+    secret: <%= ENV['OCA_GOOGLE_AUTH_SECRET']%>
+
