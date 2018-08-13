@@ -4,6 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+
 # Ignore Mac system files
 .DS_Store
 
@@ -19,9 +20,11 @@ Gemfile.lock
 !/log/.keep
 !/tmp/.keep
 
+
 .byebug_history
 
 db/schema.rb
+
 doc/
 
 localhost.crt
