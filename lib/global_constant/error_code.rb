@@ -15,7 +15,6 @@ module GlobalConstant
       401
     end
 
-
     def self.forbidden
       403
     end

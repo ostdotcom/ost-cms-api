@@ -11,10 +11,10 @@ module DbService
       published_list = []
       data = @params
       entity_id = data["entity_id"]
-      published_data = PublishedEntityAssociation.where("entity_id = '"+ entity_id +"'").last
+      published_data = PublishedEntityAssociation.where( entity_id: entity_id ).last
       if published_data
       published_data.associations.each do |element|
-        entity = EntityDataVersion.where( "id = '"+ element.to_s() +"'").first
+        entity = EntityDataVersion.where( id: element).first
         published_list.push({record: entity.data, id:entity.id})
       end
       end
@@ -25,7 +25,10 @@ module DbService
       active_list = []
       data = @params
       entity_id = data["entity_id"]
-      entities = EntityDataVersion.where(["status = '0'", "status = '1'", "entity_id = '"+ entity_id +"'"]).order(:order_weight)
+      entities = EntityDataVersion
+                     .where(status: [0,1])
+                     .where(entity_id: entity_id)
+                     .order(:order_weight)
       entities.each do |entity|
         active_list.push({id: entity.id, record: entity.data})
       end
@@ -35,7 +38,7 @@ module DbService
     def get_record
       data = @params
       id = data["id"]
-      record = EntityDataVersion.where("id = '"+ id +"'").first
+      record = EntityDataVersion.where(id: id).first
       if record
         Result::Base.success(data: {id: id, record: record.data})
       else

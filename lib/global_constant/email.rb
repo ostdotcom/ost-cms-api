@@ -6,35 +6,15 @@ module GlobalConstant
     class << self
 
       def default_from
-        'kyc.notifier@ost.com'
+        'ostcms.notifier@ost.com'
       end
 
       def default_to
-        ['mayur@ost.com', 'akshay@ost.com']
-      end
-
-      def default_pm_to
-        ['mayur@ost.com']
-      end
-
-      def st_balance_report_email_to
-        ['mayur@ost.com']
-      end
-
-      def contact_us_admin_email
-        Rails.env.production? ? 'mayur@ost.com' : 'mayur@ost.com'
-      end
-
-      def default_directors_to
-        ['mayur@ost.com']
-      end
-
-      def default_eth_devs_to
-        ['mayur@ost.com']
+        ['mayur@ost.com', 'akshay@ost.com', 'preshita@ost.com', 'backend.team@ost.com']
       end
 
       def subject_prefix
-        "STA #{Rails.env} : "
+        "OCA #{Rails.env} : "
       end
 
     end

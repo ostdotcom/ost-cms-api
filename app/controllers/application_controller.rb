@@ -1,15 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  include ::Util::ResultHelper
   include Sanitizer
   protect_from_forgery with: :exception
   prepend_around_action :handle_exceptions_gracefully
   before_action :sanitize_params
   after_action :set_response_headers
-
-
-  def authenticate
-    redirect_to :login unless user_signed_in?
-  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -20,35 +16,20 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-
   def sanitize_params
     sanitize_params_recursively(params)
   end
-
 
   def set_response_headers
     response.headers["X-Robots-Tag"] = 'noindex, nofollow'
     response.headers["Content-Type"] = 'application/json; charset=utf-8'
   end
 
-
   def handle_exceptions_gracefully
-
     begin
-
       yield
-
     rescue => se
-
       Rails.logger.error("Exception in API: #{se.message}")
-      # ApplicationMailer.notify(
-      #     body: {exception: {message: se.message, backtrace: se.backtrace}},
-      #     data: {
-      #         'params' => params
-      #     },
-      #     subject: 'Exception in API'
-      # ).deliver
-
       r = Result::Base.exception(
           se,
           {
@@ -59,12 +40,8 @@ class ApplicationController < ActionController::Base
           }
       )
       render_api_response(r)
-
     end
-
   end
-
-
 
   def render_api_response(service_response)
     # calling to_json of Result::Base
@@ -75,14 +52,14 @@ class ApplicationController < ActionController::Base
     http_status_code = GlobalConstant::ErrorCode.ok unless GlobalConstant::ErrorCode.allowed_http_codes.include?(http_status_code)
 
     # sanitizing out error and data. only display_text and display_heading are allowed to be sent to FE.
-    if !service_response.success? && !Rails.env.development?
+    if !service_response.success?
       ApplicationMailer.notify(
           body: {},
           data: {
               response_hash: response_hash
           },
-          subject: 'Error in KYC submit API'
-      ).deliver if params[:action] == 'kyc_submit' && params[:controller] == 'web/saas_user/token_sale'
+          subject: 'Error in OST CMS API'
+      ).deliver if !Rails.env.development?
 
       err = response_hash.delete(:err) || {}
       response_hash[:err] = {
