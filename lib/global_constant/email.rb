@@ -17,6 +17,15 @@ module GlobalConstant
         "OCA #{Rails.env} : "
       end
 
+      def whitelisted_users
+        @whitelisted_users ||= GlobalConstant::Base.cms_api[:whitelisted_users].split(' ')
+      end
+
+      def is_whitelisted_email?(user_email)
+        whitelisted_users
+        @whitelisted_users.include? user_email
+      end
+
     end
 
   end

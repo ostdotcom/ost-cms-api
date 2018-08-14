@@ -5,7 +5,8 @@ class UserController < ApplicationController
   def signin
     # some logic to check whitelist
     auth = request.env["omniauth.auth"]
-    if is_whitelist(auth.info.email)
+
+    if GlobalConstant::Email.is_whitelisted_email?(auth.info.email)
       @user = User.find_or_create_from_auth_hash(auth)
       session[:user_id] = @user.id
       redirect_page = GlobalConstant::Base.cms_api[:auth_success_route]
@@ -34,7 +35,7 @@ class UserController < ApplicationController
 
   def filter_user_data(user)
     filtered_info = {}
-    info = ["first_name", "last_name", "picture"]
+    info = [ "first_name", "last_name", "picture"]
     info.each do |item|
       filtered_info[item] = user[item]
     end
