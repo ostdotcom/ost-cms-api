@@ -21,8 +21,6 @@ module DbService
       data.delete("id")
       data.delete("entity_id")
       weight = OrderWeights.new.get_new_record_weight(entity_id)
-      puts "===================================================="
-      puts weight
       created_record = EntityDataVersion.create!(data: data, order_weight: weight, entity_id: entity_id, status: 0, user_id: @user_id)
       success_with_data(created_record.data)
     end
