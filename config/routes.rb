@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  scope 'auth', controller: 'user' do
+  scope 'auth', controller: 'api_cms/user' do
     match '/:provider/callback' => :signin, as: 'signin',  via: [:GET]
     match '/logout' => :logout, as: 'logout', via: [:GET]
     match '/user' => :profile, as: 'profile', via: [:GET]
   end
 
-  scope 'api/content', controller: 'content' do
+  scope 'api/content', controller: 'api_cms/content' do
 
     # GET requests
     match '/entity_data' => :entity_data, via: [:GET]
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     match '/sort' => :sort_data, via: [:POST]
   end
 
-  scope 'api/published', controller: 'published' do
+  scope 'api/published', controller: 'api_rest/publish' do
     match '' => :get_published_data, via: [:GET]
   end
 

@@ -18,6 +18,9 @@ gem 'rake', '12.3.1'
 # Mysql2
 gem 'mysql2'
 
+# hkdf for sha256
+gem 'hkdf', '0.2.0'
+
 # OJ
 gem 'oj', '3.3.8'
 

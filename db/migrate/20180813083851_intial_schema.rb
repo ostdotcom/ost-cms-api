@@ -39,6 +39,7 @@ class IntialSchema < ActiveRecord::Migration[5.1]
       t.string "first_name", null: false
       t.string "last_name", null: false
       t.string "picture", null: false
+      t.string "state", null: false
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
       t.index ["email"], name: "email_UNIQUE", unique: true

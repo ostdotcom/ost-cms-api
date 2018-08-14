@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180813083851) do
+ActiveRecord::Schema.define(version: 20180814114505) do
 
   create_table "entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180813083851) do
     t.bigint "entity_id", null: false
     t.bigint "user_id", null: false
     t.text "data", limit: 4294967295, null: false
-    t.float "order_weight", limit: 24, null: false
+    t.decimal "order_weight", precision: 55, scale: 20, null: false
     t.integer "status", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180813083851) do
     t.string "picture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["email"], name: "email_UNIQUE", unique: true
   end
 

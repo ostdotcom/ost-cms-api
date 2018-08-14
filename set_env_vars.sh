@@ -10,6 +10,9 @@ export OCA_DEFAULT_DB_PASSWORD='mayur123'
 # Core ENV Details
 export OCA_BASE_URL='https://securedhost.com'
 
+# SHA256 Salt
+export OCA_SHA256_SESSION_SALT='577c3f94936eaae91a0793c4ad5500314fe5a526a3b3f7c7c71c303f883d903df1'
+
 # whitelisted_users
 export OCA_WHITELISTED_USERS='mayur@ost.com akshay@ost.com preshita@ost.com'
 

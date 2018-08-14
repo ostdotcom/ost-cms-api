@@ -7,15 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :sanitize_params
   after_action :set_response_headers
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
-  def user_signed_in?
-    # converts current_user to a boolean by negating the negation
-    !!current_user
-  end
-
   def sanitize_params
     sanitize_params_recursively(params)
   end
@@ -73,24 +64,6 @@ class ApplicationController < ActionController::Base
     end
 
     (render plain: Oj.dump(response_hash, mode: :compat), status: http_status_code)
-  end
-
-
-
-  def user_auth
-    if !user_signed_in?
-      r = error_with_data(
-
-          'user_not_authenticated',
-          'User is not authenticated',
-          '',
-          GlobalConstant::ErrorAction.default,
-          {},
-          {},
-          GlobalConstant::ErrorCode.unauthorized_access
-      )
-      render_api_response(r)
-    end
   end
 
 end

@@ -8,7 +8,14 @@ module DbService
     end
 
     def perform
-      validate
+      r = validate
+      return r unless r.success?
+      return handle_data
+    end
+
+    private
+
+    def handle_data
       data = @params
       entity_id =  data["entity_id"]
       data.delete("entity_id")
@@ -19,10 +26,10 @@ module DbService
       ordered_array = []
       entities.each do |entity|
         entity.status = 1
-        entity.save
+        entity.save!
         ordered_array.push(entity.id)
       end
-      PublishedEntityAssociation.create(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
+      PublishedEntityAssociation.create!(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
       success
     end
 

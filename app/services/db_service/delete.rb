@@ -8,14 +8,19 @@ module DbService
     end
 
     def perform
-      validate
-      id = @params["id"]
-      entity_to_delete = EntityDataVersion.find_by_id(id)
-      entity_to_delete.status = 2
-      entity_to_delete.save
-      success
+      r = validate
+      return r unless r.success?
+      return handle_data
     end
 
+    private
+
+    def handle_data
+      entity_to_delete = EntityDataVersion.find_by_id(@params["id"])
+      entity_to_delete.status = 2
+      entity_to_delete.save!
+      success
+    end
 
   end
 end

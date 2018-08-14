@@ -17,6 +17,10 @@ module GlobalConstant
         @oauth ||= fetch_config.fetch('oauth', {}).with_indifferent_access
       end
 
+      def sha256_salt
+        @oauth ||= fetch_config.fetch('sha256_salt', {}).with_indifferent_access
+      end
+
       private
 
       def fetch_config

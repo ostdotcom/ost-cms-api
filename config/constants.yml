@@ -11,3 +11,6 @@ constants:
     key: <%= ENV['OCA_GOOGLE_AUTH_KEY']%>
     secret: <%= ENV['OCA_GOOGLE_AUTH_SECRET']%>
 
+  sha256_salt:
+    session: <%= ENV['OCA_SHA256_SESSION_SALT']%>
+
