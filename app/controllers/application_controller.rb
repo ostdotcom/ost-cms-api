@@ -74,4 +74,23 @@ class ApplicationController < ActionController::Base
 
     (render plain: Oj.dump(response_hash, mode: :compat), status: http_status_code)
   end
+
+
+
+  def user_auth
+    if !user_signed_in?
+      r = error_with_data(
+
+          'user_not_authenticated',
+          'User is not authenticated',
+          '',
+          GlobalConstant::ErrorAction.default,
+          {},
+          {},
+          GlobalConstant::ErrorCode.unauthorized_access
+      )
+      render_api_response(r)
+    end
+  end
+
 end

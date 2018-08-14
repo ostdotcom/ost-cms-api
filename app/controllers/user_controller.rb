@@ -1,6 +1,7 @@
 
 class UserController < ApplicationController
 
+  before_action :user_auth, only: [:profile]
   def signin
     # some logic to check whitelist
     auth = request.env["omniauth.auth"]
@@ -20,7 +21,7 @@ class UserController < ApplicationController
   end
 
   def profile
-    response = success_with_data(current_user.attributes)
+    response = success_with_data(filter_user_data(current_user.attributes))
     render_api_response(response)
   end
 
@@ -32,6 +33,11 @@ class UserController < ApplicationController
   end
 
   def filter_user_data(user)
-
+    filtered_info = {}
+    info = ["first_name", "last_name", "picture"]
+    info.each do |item|
+      filtered_info[item] = user[item]
+    end
+    filtered_info
   end
 end

@@ -1,4 +1,4 @@
-class ApiController < ApplicationController
+class ContentController < ApplicationController
   before_action :user_auth
 
   def read_yml_config
@@ -28,11 +28,6 @@ class ApiController < ApplicationController
     render_api_response(service_response)
   end
 
-  def get_published_data
-    service_response = DbService::Get.new(params).get_published
-    render_api_response(service_response)
-  end
-
   def get_active_data
     service_response = DbService::Get.new(params).get_active
     render_api_response(service_response)
@@ -46,24 +41,6 @@ class ApiController < ApplicationController
   def sort_data
     service_response = DbService::Sort.new(params, @current_user).perform
     render_api_response(service_response)
-  end
-
-  private
-
-  def user_auth
-    if !user_signed_in?
-      r = error_with_data(
-
-              'user_not_authenticated',
-              'User is not authenticated',
-               '',
-               GlobalConstant::ErrorAction.default,
-               {},
-              {},
-              GlobalConstant::ErrorCode.unauthorized_access
-      )
-      render_api_response(r)
-    end
   end
 
 end
