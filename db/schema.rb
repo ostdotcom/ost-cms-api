@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20180814114505) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "picture", null: false
+    t.string "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state"
     t.index ["email"], name: "email_UNIQUE", unique: true
   end
 

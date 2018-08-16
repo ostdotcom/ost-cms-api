@@ -38,9 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'letter_opener'
-end
 
-group :development do
   gem 'listen', '3.1.5'
 end
 

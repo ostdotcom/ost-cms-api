@@ -1,5 +1,5 @@
 constants:
-  root_url: <%= ENV['OCA_BASE_URL']%>
+  root_url: <%= ENV['OC_BASE_URL']%>
 
   cms_api:
     whitelisted_users: <%= ENV['OCA_WHITELISTED_USERS']%>
