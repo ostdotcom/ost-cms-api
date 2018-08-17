@@ -21,20 +21,20 @@ module DbService
       entity = EntityDataVersion.find_by_id(id)
       prev_entity = EntityDataVersion
                         .where(id: prev_id)
-                        .where(status: 0)
+                        .where(status: [0,1])
                         .where(entity_id: entity_id) if prev_id.present?
       next_entity = EntityDataVersion
                         .where(id: next_id)
-                        .where(status: 0)
+                        .where(status: [0,1])
                         .where(entity_id: entity_id) if next_id.present?
 
 
       if prev_entity.present? && next_entity.present?
         order_weight = (prev_entity.first.order_weight + next_entity.first.order_weight) / 2
       elsif prev_entity.present?
-        order_weight = prev_entity.first.order_weight * 2
+        order_weight = prev_entity.first.order_weight * (4.0 / 3.0)
       elsif next_entity.present?
-        order_weight = next_entity.first.order_weight / 2
+        order_weight = next_entity.first.order_weight * (3.0 / 4.0)
       end
       entity.order_weight = order_weight
       entity.save!

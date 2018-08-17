@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     match '/delete' => :delete_data, via: [:POST]
     match '/publish' => :publish_data, via: [:POST]
     match '/sort' => :sort_data, via: [:POST]
+    match '/rollback' => :rollback_publish, via: [:POST]
   end
 
   scope 'api/published', controller: 'api_rest/publish' do

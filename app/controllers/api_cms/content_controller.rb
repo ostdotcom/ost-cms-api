@@ -43,5 +43,10 @@ module ApiCms
       render_api_response(service_response)
     end
 
+    def rollback_publish
+      service_response = DbService::Rollback.new(params, @current_user).perform
+      render_api_response(service_response)
+    end
+
   end
 end
