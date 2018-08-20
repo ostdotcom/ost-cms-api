@@ -8,6 +8,9 @@ module DbService
       params.delete("action")
       params = clean(params)
       @params = params
+      if @params["entity_id"]
+        @entity = Entity.find_by_id(@params["entity_id"])
+      end
       @user_id = current_user.present? ? current_user.id : 0
     end
 
@@ -22,10 +25,13 @@ module DbService
     def validate
       config= GlobalConstant::ApiConfig.fetch_config
       error_object = {}
-      @params.each do |param, value|
-        if config["meta"][param.to_sym].present?
-          field_config = config["meta"][param.to_sym]
-          error_object[param] = apply_validations(field_config[:validations], field_config[:data_kind], value)
+      if @entity.present?
+        config["meta"][@entity.name.to_sym].each do |key, value|
+          if  @params[key.to_s]
+            error_object[key] = apply_validations(value[:validations], value[:data_kind], @params[key.to_s])
+          else
+            error_object[key] = field_missing_error
+          end
         end
       end
       is_validated (error_object)
@@ -65,6 +71,12 @@ module DbService
       return error_list
     end
 
+
+
+    def field_missing_error
+      [{required: "This field is required"}]
+    end
+
     def required(validation, input)
       if validation && input.empty?
         return "This field is required"
@@ -98,19 +110,6 @@ module DbService
       if (input =~ pattern) == nil
         return "Date format is not valid"
       end
-    end
-
-
-    def min_bytes(validation, input)
-
-    end
-
-    def max_bytes(validation, input)
-
-    end
-
-    def accept(validation, input)
-
     end
 
   end
