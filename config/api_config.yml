@@ -19,6 +19,9 @@ meta:
         :data_kind: url
         :validations:
             :required: true
+            :min_bytes: 100
+            :max_bytes: 1000
+            :accept: ['image/jpg' , 'image/png']
         :data_key_name: news_list_image
         :section: news_list
     :news_list_article_link:
