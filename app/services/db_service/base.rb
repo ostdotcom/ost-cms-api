@@ -75,6 +75,7 @@ module DbService
 
     def field_missing_error
       [{required: "This field is required"}]
+      []
     end
 
     def required(validation, input)

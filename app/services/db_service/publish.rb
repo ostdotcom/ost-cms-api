@@ -8,8 +8,6 @@ module DbService
     end
 
     def perform
-      r = validate
-      return r unless r.success?
       return handle_data
     end
 
