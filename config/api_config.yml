@@ -1,5 +1,5 @@
 meta:
-    :news_list:
+    :1:
         :news_list_title:
             :data_kind: text
             :validations:
@@ -39,4 +39,21 @@ meta:
                 :required: true
             :data_key_name: news_list_date
             :section: news_list
+    :2:
+        :members_list_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 80
+            :data_key_name: members_list_title
+            :section: members_list
+        :members_list_name:
+            :data_kind: text
+            :validations:
+                :required: false
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_name
+            :section: members_list
 

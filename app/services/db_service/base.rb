@@ -26,7 +26,7 @@ module DbService
       config= GlobalConstant::ApiConfig.fetch_config
       error_object = {}
       if @entity.present?
-        config["meta"][@entity.name.to_sym].each do |key, value|
+        config["meta"][@entity.id.to_s.to_sym].each do |key, value|
           if  @params[key.to_s]
             error_object[key] = apply_validations(value[:validations], value[:data_kind], @params[key.to_s])
           else
