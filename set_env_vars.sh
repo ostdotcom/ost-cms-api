@@ -8,7 +8,7 @@ export OCA_DEFAULT_DB_USER=root
 export OCA_DEFAULT_DB_PASSWORD='root'
 
 # Base Url
-export OC_BASE_URL='https://securedhost.com'
+export OC_BASE_URL='https://cms.developmentost.com'
 
 # SHA256 Salt
 export OCA_SHA256_SESSION_SALT='577c3f94936eaae91a0793c4ad5500314fe5a526a3b3f7c7c71c303f883d903df1'
@@ -19,3 +19,14 @@ export OCA_WHITELISTED_USERS='mayur@ost.com akshay@ost.com preshita@ost.com'
 # Google auth details
 export OCA_GOOGLE_AUTH_KEY='1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.googleusercontent.com'
 export OCA_GOOGLE_AUTH_SECRET='RNlmeLP8mMYonNoBw-X8GpvD'
+
+# AWS Credentials
+export OCA_AWS_ACCESS_KEY='AKIAJVUCQSK5GVPO5EDQ'
+export OCA_AWS_SECRET_KEY='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'
+export OCA_AWS_S3_BUCKET='wa.ost.com'
+export OCA_AWS_REGION='us-east-1'
+export OCA_AWS_S3_DIRECTORY_LOCATION='development_ost/images/'
+
+
+# cloudfront url
+export OCA_CLOUDFRONT_URL='https://dxwfxs8b4lg24.cloudfront.net'
