@@ -1,0 +1,2 @@
+meta:
+    :cloudfront_url: <%= ENV['OCA_CLOUDFRONT_URL'] %>
