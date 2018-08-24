@@ -113,5 +113,18 @@ module DbService
       end
     end
 
+    def min_bytes(validation, input)
+
+    end
+
+    def max_bytes(validation, input)
+
+    end
+
+    def accept(validation, input)
+
+    end
+
+
   end
 end

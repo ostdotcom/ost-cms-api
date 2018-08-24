@@ -21,6 +21,14 @@ module GlobalConstant
         @oauth ||= fetch_config.fetch('sha256_salt', {}).with_indifferent_access
       end
 
+      def aws_credentials
+        @aws_credentials ||= fetch_config.fetch('aws_credentials', {}).with_indifferent_access
+      end
+
+      def cloudfront
+        @cloudfront ||= fetch_config.fetch('cloudfront', {}).with_indifferent_access
+      end
+
       private
 
       def fetch_config

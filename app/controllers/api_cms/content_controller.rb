@@ -7,6 +7,14 @@ module ApiCms
       render_api_response(response)
     end
 
+
+    def get_app_config
+      response = success_with_data(GlobalConstant::AppConfig.fetch_config)
+      render_api_response(response)
+
+    end
+
+
     def create_data
       service_response = DbService::Create.new(params, @current_user).perform
       render_api_response(service_response)
@@ -45,6 +53,12 @@ module ApiCms
 
     def rollback_publish
       service_response = DbService::Rollback.new(params, @current_user).perform
+      render_api_response(service_response)
+    end
+
+
+    def get_signed_url
+      service_response = AwsS3::GetSignedUrl.new(params).perform
       render_api_response(service_response)
     end
 

@@ -14,3 +14,12 @@ constants:
   sha256_salt:
     session: <%= ENV['OCA_SHA256_SESSION_SALT']%>
 
+  aws_credentials:
+    access_key: <%= ENV['OCA_AWS_ACCESS_KEY'] %>
+    secret_key: <%= ENV['OCA_AWS_SECRET_KEY'] %>
+    bucket: <%= ENV['OCA_AWS_S3_BUCKET'] %>
+    region: <%= ENV['OCA_AWS_REGION'] %>
+    directory_location: <%= ENV['OCA_AWS_S3_DIRECTORY_LOCATION'] %>
+
+  cloudfront:
+    url: <%= ENV['OCA_CLOUDFRONT_URL'] %>

@@ -30,6 +30,8 @@ gem 'sanitize', '4.5.0'
 # Exception notifier
 gem 'exception_notification', '4.2.2'
 
+gem 'aws-sdk-s3', '1.5.0'
+
 group :development, :test do
   # Use Puma as the app server
   gem 'puma', '3.11.4'
