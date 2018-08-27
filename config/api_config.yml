@@ -65,5 +65,21 @@ meta:
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: members_list_image
             :section: members_list
+    :3:
+         :extended_team_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+         :extended_team_image:
+             :data_kind: text
+             :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 100000000
+                :accept: image/jpg,image/png,image/jpeg
+             :data_key_name: extended_team_image
+
 
 
