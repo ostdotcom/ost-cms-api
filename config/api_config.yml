@@ -100,9 +100,60 @@ meta:
             :section: members_list
 
 
+    :3:
+        :advisors_list_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 80
+            :data_key_name: advisors_list_title
+        :advisors_list_name:
+            :data_kind: text
+            :validations:
+                :required: false
+                :minlength: 5
+                :maxlength: 50
+            :data_key_name: advisors_list_name
+        :advisors_list_image:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 100000000
+                :accept: image/jpg,image/png,image/jpeg
+            :data_key_name: advisors_list_image
+        :advisors_list_linkedIn:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: advisors_list_linkedIn
+
+        :advisors_list_twitter:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: advisors_list_twitter
+        :advisors_list_medium:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: advisors_list_medium
+        :advisors_list_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: advisors_list_description
 
     :4:
-
         :extended_team_url:
             :data_kind: url
             :validations:
@@ -117,5 +168,57 @@ meta:
                 :max_bytes: 100000000
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: extended_team_image
+
+    :5:
+        :careers_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 80
+            :data_key_name: careers_title
+
+        :careers_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 500
+            :data_key_name: careers_description
+
+        :careers_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: careers_url
+
+
+    :6:
+        :careers_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 80
+            :data_key_name: careers_title
+
+        :careers_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 500
+            :data_key_name: careers_description
+
+        :careers_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: careers_url
+
 
 
