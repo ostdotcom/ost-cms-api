@@ -65,6 +65,38 @@ meta:
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: members_list_image
             :section: members_list
+        :members_list_linkedIn:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_linkedIn
+            :section: members_list
+        :members_list_twitter:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_twitter
+            :section: members_list
+        :members_list_medium:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_medium
+            :section: members_list
+        :members_list_description:
+            :data_kind: text
+            :validations:
+                :required: false
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_description
+            :section: members_list
     :3:
          :extended_team_url:
             :data_kind: url
@@ -80,6 +112,5 @@ meta:
                 :max_bytes: 100000000
                 :accept: image/jpg,image/png,image/jpeg
              :data_key_name: extended_team_image
-
 
 
