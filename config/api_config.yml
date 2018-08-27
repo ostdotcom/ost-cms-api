@@ -52,8 +52,8 @@ meta:
             :data_kind: text
             :validations:
                 :required: false
-                :minlength: 50
-                :maxlength: 500
+                :minlength: 5
+                :maxlength: 50
             :data_key_name: members_list_name
             :section: members_list
         :members_list_image:
@@ -65,21 +65,57 @@ meta:
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: members_list_image
             :section: members_list
+
+        :members_list_linkedIn:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: members_list_linkedIn
+            :section: members_list
+        :members_list_twitter:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: members_list_twitter
+            :section: members_list
+        :members_list_medium:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: members_list_medium
+            :section: members_list
+        :members_list_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 50
+                :maxlength: 500
+            :data_key_name: members_list_description
+            :section: members_list
+
+
+
     :4:
-         :extended_team_url:
+
+        :extended_team_url:
             :data_kind: url
             :validations:
                 :required: true
                 :minlength: 3
                 :maxlength: 2083
-         :extended_team_image:
-             :data_kind: text
-             :validations:
+        :extended_team_image:
+            :data_kind: text
+            :validations:
                 :required: true
                 :min_bytes: 1000
                 :max_bytes: 100000000
                 :accept: image/jpg,image/png,image/jpeg
-             :data_key_name: extended_team_image
-
+            :data_key_name: extended_team_image
 
 

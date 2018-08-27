@@ -101,14 +101,14 @@ module DbService
 
     def url(input)
       pattern = /\A#{URI::regexp}\z/
-      if (input =~ pattern) == nil
+      if input.length > 0 && (input =~ pattern) == nil
         return "Please enter valid URL"
       end
     end
 
     def date(input)
       pattern = /\d{4}-\d{1,2}-\d{1,2}$/
-      if (input =~ pattern) == nil
+      if input.length > 0 && (input =~ pattern) == nil
         return "Date format is not valid"
       end
     end
