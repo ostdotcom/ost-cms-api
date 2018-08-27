@@ -56,4 +56,14 @@ meta:
                 :maxlength: 500
             :data_key_name: members_list_name
             :section: members_list
+        :members_list_image:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 100000000
+                :accept: image/jpg,image/png,image/jpeg
+            :data_key_name: members_list_image
+            :section: members_list
+
 

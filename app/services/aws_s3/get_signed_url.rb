@@ -14,10 +14,10 @@ module AwsS3
                                                  @params["images"]["image_type"])
       success_with_data(
                           {
-                              "news_list_image" => {
+
                                   url: r.url,
                                   fields: r.fields
-                              }
+
                           }
                         )
     end
