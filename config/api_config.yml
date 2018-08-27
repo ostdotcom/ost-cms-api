@@ -65,7 +65,7 @@ meta:
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: members_list_image
             :section: members_list
-    :3:
+    :4:
          :extended_team_url:
             :data_kind: url
             :validations:
