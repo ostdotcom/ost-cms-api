@@ -19,7 +19,10 @@ constants:
     secret_key: <%= ENV['OCA_AWS_SECRET_KEY'] %>
     bucket: <%= ENV['OCA_AWS_S3_BUCKET'] %>
     region: <%= ENV['OCA_AWS_REGION'] %>
-    directory_location: <%= ENV['OCA_AWS_S3_DIRECTORY_LOCATION'] %>
+    image_upload_path: <%= ENV['OCA_AWS_S3_IMG_UPLOAD_PATH'] %>
 
   cloudfront:
     url: <%= ENV['OCA_CLOUDFRONT_URL'] %>
+
+  web:
+    supported_image_types: <%= ENV['SUPPORTED_IMAGE_TYPES'] %>

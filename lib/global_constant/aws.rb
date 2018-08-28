@@ -20,8 +20,8 @@ module GlobalConstant
         GlobalConstant::Base.aws_credentials[:bucket]
       end
 
-      def directory_location
-        GlobalConstant::Base.aws_credentials[:directory_location]
+      def image_upload_path
+        GlobalConstant::Base.aws_credentials[:image_upload_path]
       end
 
     end

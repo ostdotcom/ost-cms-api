@@ -154,20 +154,67 @@ meta:
             :data_key_name: advisors_list_description
 
     :4:
-        :extended_team_url:
+        :partners_name:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 50
+        :partners_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 20
+                :maxlength: 500
+        :partners_founders:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 500
+        :partners_location:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 100
+        :partners_industry:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: null
+                :maxlength: null
+        :partners_size:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 50
+        :partners_url:
             :data_kind: url
             :validations:
                 :required: true
                 :minlength: 3
                 :maxlength: 2083
-        :extended_team_image:
-            :data_kind: text
+        :partners_twitter:
+            :data_kind: url
             :validations:
-                :required: true
-                :min_bytes: 1000
-                :max_bytes: 100000000
-                :accept: image/jpg,image/png,image/jpeg
-            :data_key_name: extended_team_image
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+        :partners_medium:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+        :partners_linkedin:
+            :data_kind: url
+            :validations:
+                :required: false
+                :minlength: 3
+                :maxlength: 2083
+
 
     :5:
         :careers_title:
@@ -219,6 +266,9 @@ meta:
                 :minlength: 3
                 :maxlength: 2083
             :data_key_name: careers_url
+
+
+
 
 
 

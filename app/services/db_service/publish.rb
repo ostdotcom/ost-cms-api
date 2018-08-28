@@ -21,12 +21,14 @@ module DbService
                      .where(status: [0,1])
                      .where(entity_id: entity_id)
                      .order(:order_weight)
-      ordered_array = []
+      ordered_array, ordered_data_array = [], []
       entities.each do |entity|
         entity.status = 1
         entity.save!
         ordered_array.push(entity.id)
+        ordered_data_array.push(entity.data)
       end
+      Aws::S3Manager.new.store(GlobalConstant::Aws.image_upload_path, ordered_data_array, GlobalConstant::Aws.bucket)
       PublishedEntityAssociation.create!(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
       success
     end
