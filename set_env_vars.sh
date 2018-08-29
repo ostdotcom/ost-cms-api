@@ -26,6 +26,7 @@ export OCA_AWS_SECRET_KEY='z5OVLGXAmy5BXUfq7s/sTHEOBjAmaYZnce8OGoaz'
 export OCA_AWS_S3_BUCKET='wa.ost.com'
 export OCA_AWS_REGION='us-east-1'
 export OCA_AWS_S3_IMG_UPLOAD_PATH='development_ost/images/'
+export OCA_AWS_S3_JSON_UPLOAD_PATH='development_ost/json_files/'
 
 
 # cloudfront url

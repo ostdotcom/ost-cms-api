@@ -23,18 +23,15 @@ module Aws
       )
     end
 
-    def   store(s3_path, body, bucket, options = {})
-    params = {
-        key: s3_path,
-        body: body,
-        bucket: bucket
-    }
-    options.merge!({
-                    acl: "public"
-                   })
-
-    client.put_object(params.merge(options))
-
+    def store(s3_path, body, bucket, content_type)
+      params = {
+          key: s3_path,
+          body: body,
+          bucket: bucket,
+          acl: "public-read",
+          content_type: content_type
+      }
+      client.put_object(params)
     end
 
     def client

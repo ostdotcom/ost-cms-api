@@ -20,6 +20,7 @@ constants:
     bucket: <%= ENV['OCA_AWS_S3_BUCKET'] %>
     region: <%= ENV['OCA_AWS_REGION'] %>
     image_upload_path: <%= ENV['OCA_AWS_S3_IMG_UPLOAD_PATH'] %>
+    json_file_upload_path: <%= ENV['OCA_AWS_S3_JSON_UPLOAD_PATH'] %>
 
   cloudfront:
     url: <%= ENV['OCA_CLOUDFRONT_URL'] %>

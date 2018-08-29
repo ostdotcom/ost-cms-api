@@ -24,6 +24,10 @@ module GlobalConstant
         GlobalConstant::Base.aws_credentials[:image_upload_path]
       end
 
+      def json_file_upload_path
+        GlobalConstant::Base.aws_credentials[:json_file_upload_path]
+      end
+
     end
 
   end

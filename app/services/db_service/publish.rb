@@ -14,6 +14,7 @@ module DbService
     private
 
     def handle_data
+      ordered_array, ordered_data_array = [], []
       data = @params
       entity_id =  data["entity_id"]
       data.delete("entity_id")
@@ -21,14 +22,16 @@ module DbService
                      .where(status: [0,1])
                      .where(entity_id: entity_id)
                      .order(:order_weight)
-      ordered_array, ordered_data_array = [], []
+
       entities.each do |entity|
         entity.status = 1
         entity.save!
         ordered_array.push(entity.id)
         ordered_data_array.push(entity.data)
       end
-      Aws::S3Manager.new.store(GlobalConstant::Aws.image_upload_path, ordered_data_array, GlobalConstant::Aws.bucket)
+      json_data = JSON:: dump data: ordered_data_array
+      Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + entity_id+ '.json', json_data,
+                               GlobalConstant::Aws.bucket, "application/json; charset=utf-8")
       PublishedEntityAssociation.create!(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
       success
     end
