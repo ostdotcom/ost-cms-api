@@ -215,6 +215,19 @@ meta:
                 :minlength: 3
                 :maxlength: 2083
 
+        :partners_on_hover_bgcolor:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: partners_on_hover_bgcolor
+            :section: partners
+        :partners_on_hover_imgcolor:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: partners_on_hover_imgcolor
+            :section: partners
+
 
     :5:
         :careers_title:
