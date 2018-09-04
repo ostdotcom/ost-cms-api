@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   scope 'api/published', controller: 'api_rest/publish' do
     match '' => :get_published_data, via: [:GET]
+    match 'preview' => :get_preview_data, via: [:GET]
   end
 
 

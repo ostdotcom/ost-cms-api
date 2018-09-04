@@ -17,9 +17,14 @@ module DbService
       data = @params
       @entity_id =  data["entity_id"]
       if get_published_count > 1
-        set_entity_status_from_published_table(get_last_published, 2)
+        set_entity_status_from_published_table(get_last_published, 0)
         get_last_published.destroy
         set_entity_status_from_published_table(get_last_published, 1)
+
+        get_published_records
+
+        upload_to_s3
+
         success
       else
         error_with_data(
@@ -50,6 +55,23 @@ module DbService
         entity.save
       end if published_record
 
+    end
+
+    def get_published_records
+      published_record = []
+      get_last_published.associations.each do |record|
+        record = EntityDataVersion.find_by_id(record)
+        published_record.push(record.data)
+      end
+      @published_record = published_record
+    end
+
+    def upload_to_s3
+      json_data = JSON:: dump @published_record
+      entity = Entity.find_by_id(@entity_id)
+
+      Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + entity.name + '.json', json_data,
+                               GlobalConstant::Aws.bucket, "application/json; charset=utf-8")
     end
 
   end

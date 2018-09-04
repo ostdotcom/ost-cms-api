@@ -29,8 +29,10 @@ module DbService
         ordered_array.push(entity.id)
         ordered_data_array.push(entity.data)
       end
-      json_data = JSON:: dump data: ordered_data_array
-      Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + entity_id+ '.json', json_data,
+      json_data = JSON:: dump ordered_data_array
+      entity = Entity.find_by_id(entity_id)
+
+      Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + entity.name + '.json', json_data,
                                GlobalConstant::Aws.bucket, "application/json; charset=utf-8")
       PublishedEntityAssociation.create!(associations: ordered_array, entity_id:entity_id, user_id: @user_id)
       success
