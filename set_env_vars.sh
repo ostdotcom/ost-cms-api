@@ -35,3 +35,9 @@ export OCA_CLOUDFRONT_URL='https://dxwfxs8b4lg24.cloudfront.net'
 
 #web constants
 export SUPPORTED_IMAGE_TYPES='image/png image/jpeg image/jpg'
+
+# ost web information
+export OCA_OST_URL='http://developmentost.com:8080/'
+
+# Sha256 salt
+export OCA_SHA256_SECRET_SALT='40a8e609f88f2f4fc15d9dda9035445a7577c3f94936eaae91a0793c'

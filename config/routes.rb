@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     match '/active' => :get_active_data, via: [:GET]
     match '/record' => :get_record, via: [:GET]
     match '/get_signed_url' => :get_signed_url, via: [:GET]
+    match '/get_preview_url' => :get_preview_signed_url, via: [:GET]
 
     # POST requests
     match '/create' => :create_data, via: [:POST]

@@ -62,5 +62,10 @@ module ApiCms
       render_api_response(service_response)
     end
 
+    def get_preview_signed_url
+      service_response = WebPreview::GetPreviewUrl.new(params).perform
+      render_api_response(service_response)
+    end
+
   end
 end

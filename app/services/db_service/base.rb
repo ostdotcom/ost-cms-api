@@ -99,6 +99,10 @@ module DbService
     def text(input)
     end
 
+    def array(input)
+      input.kind_of?(Array) ? nil : "Array is expected"
+    end
+
     def url(input)
       pattern = /\A#{URI::regexp}\z/
       if input.length > 0 && (input =~ pattern) == nil

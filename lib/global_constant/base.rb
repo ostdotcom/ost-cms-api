@@ -38,6 +38,10 @@ module GlobalConstant
         @supported_image_types ||=  @web[:supported_image_types].split(' ')
       end
 
+      def ost_web
+        @ost_web ||= fetch_config.fetch('ost_web', {}).with_indifferent_access
+      end
+
       private
 
       def fetch_config

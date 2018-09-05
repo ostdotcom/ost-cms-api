@@ -27,3 +27,7 @@ constants:
 
   web:
     supported_image_types: <%= ENV['SUPPORTED_IMAGE_TYPES'] %>
+
+  ost_web:
+    url: <%= ENV['OCA_OST_URL'] %>
+    sha256_salt: <%= ENV['OCA_SHA256_SECRET_SALT']%>

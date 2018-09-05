@@ -17,6 +17,7 @@ module DbService
       entity_id = data["entity_id"]
       prev_id,  next_id = data["prev"],  data["next"]
       entity = EntityDataVersion.find_by_id(id)
+      order_weight = entity.order_weight
       prev_entity = EntityDataVersion
                         .where(id: prev_id)
                         .where(status: [0,1])
@@ -28,7 +29,7 @@ module DbService
 
 
       if prev_entity.present? && next_entity.present?
-        order_weight = (prev_entity.first.order_weight + next_entity.first.order_weight) / 2
+        order_weight = (prev_entity.first.order_weight + next_entity.first.order_weight) / 2.0
       elsif prev_entity.present?
         order_weight = prev_entity.first.order_weight * (4.0 / 3.0)
       elsif next_entity.present?
