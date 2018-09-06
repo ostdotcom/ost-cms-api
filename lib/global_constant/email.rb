@@ -22,8 +22,12 @@ module GlobalConstant
       end
 
       def is_whitelisted_email?(user_email)
-        whitelisted_users
-        @whitelisted_users.include? user_email
+        if Rails.env.production?
+          whitelisted_users
+          @whitelisted_users.include? user_email
+        else
+          user_email.to_s.end_with?("@ost.com")
+        end
       end
 
     end

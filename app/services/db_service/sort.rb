@@ -31,9 +31,9 @@ module DbService
       if prev_entity.present? && next_entity.present?
         order_weight = (prev_entity.first.order_weight + next_entity.first.order_weight) / 2.0
       elsif prev_entity.present?
-        order_weight = prev_entity.first.order_weight * (4.0 / 3.0)
+        order_weight = prev_entity.first.order_weight * (10.0 / 9.0)
       elsif next_entity.present?
-        order_weight = next_entity.first.order_weight * (3.0 / 4.0)
+        order_weight = next_entity.first.order_weight * (9.0 / 10.0)
       end
       entity.order_weight = order_weight
       entity.save!
