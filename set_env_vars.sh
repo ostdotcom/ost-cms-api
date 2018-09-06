@@ -25,16 +25,12 @@ export OCA_AWS_ACCESS_KEY='AKIAJVUCQSK5GVPO5EDQ'
 export OCA_AWS_SECRET_KEY='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'
 export OCA_AWS_S3_BUCKET='wa.ost.com'
 export OCA_AWS_REGION='us-east-1'
-export OCA_AWS_S3_IMG_UPLOAD_PATH='development_ost/images/'
-export OCA_AWS_S3_JSON_UPLOAD_PATH='development_ost/json_files/'
-
 
 # cloudfront url
 export OCA_CLOUDFRONT_URL='https://dxwfxs8b4lg24.cloudfront.net'
 
-
 #web constants
-export SUPPORTED_IMAGE_TYPES='image/png image/jpeg image/jpg'
+export OCA_SUPPORTED_IMAGE_TYPES='image/png image/jpeg image/jpg'
 
 # ost web information
 export OCA_OST_URL='http://developmentost.com:8080/'

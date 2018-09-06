@@ -29,15 +29,6 @@ module GlobalConstant
         @cloudfront ||= fetch_config.fetch('cloudfront', {}).with_indifferent_access
       end
 
-      def web
-        @web ||= fetch_config.fetch('web', {}).with_indifferent_access
-      end
-
-      def supported_image_type
-        web
-        @supported_image_types ||=  @web[:supported_image_types].split(' ')
-      end
-
       def ost_web
         @ost_web ||= fetch_config.fetch('ost_web', {}).with_indifferent_access
       end

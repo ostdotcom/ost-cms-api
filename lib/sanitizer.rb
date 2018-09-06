@@ -2,8 +2,6 @@ module Sanitizer
 
   # Sanitize params recursively
   #
-  #
-  #
   # @param [Hash] passed_params
   #
   def sanitize_params_recursively(passed_param)
@@ -27,10 +25,6 @@ module Sanitizer
   end
 
   # Hashify params recursively
-  #
-  # *
-  # *
-  # *
   #
   # @param [Hash] passed_params
   #
@@ -59,10 +53,6 @@ module Sanitizer
   end
 
   # Recursively check keys sanity
-  #
-  # *
-  # *
-  # *
   #
   # @param [Hash] passed_params
   #

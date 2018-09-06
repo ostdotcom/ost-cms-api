@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     match '/record' => :get_record, via: [:GET]
     match '/get_signed_url' => :get_signed_url, via: [:GET]
     match '/get_preview_url' => :get_preview_signed_url, via: [:GET]
+    match '/published' => :get_published_data, via: [:GET]
 
     # POST requests
     match '/create' => :create_data, via: [:POST]
@@ -26,9 +27,8 @@ Rails.application.routes.draw do
     match '/rollback' => :rollback_publish, via: [:POST]
   end
 
-  scope 'api/published', controller: 'api_rest/publish' do
-    match '' => :get_published_data, via: [:GET]
-    match 'preview' => :get_preview_data, via: [:GET]
+  scope 'api/preview', controller: 'api_rest/preview' do
+    match '/:entity' => :get_data, via: [:GET]
   end
 
 

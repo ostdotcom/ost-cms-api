@@ -18,7 +18,25 @@ module DbService
       success_with_data({entity_id: entity_id, list: published_list})
     end
 
-    def get_active
+    def get_active_by_name
+      entity = Entity.where(name: @params[:name]).first
+      if entity.present?
+        @params["entity_id"] = entity.id
+        get_active_by_id
+      else
+        error_with_data(
+            'no_record_found',
+            'No record found',
+            'No record found',
+            GlobalConstant::ErrorAction.default,
+            {},
+            {},
+            GlobalConstant::ErrorCode.bad_request
+        )
+      end
+    end
+
+    def get_active_by_id
       active_list = []
       data = @params
       entity_id = data["entity_id"]

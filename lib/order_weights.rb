@@ -11,7 +11,7 @@ class OrderWeights
   end
 
   def get_min_weight (entity_id)
-    EntityDataVersion.where(:entity_id => entity_id ).where(:status => [0,1]).minimum("order_weight")
+    EntityDataVersion.where(:entity_id => entity_id).where(:status => [0,1]).minimum("order_weight")
   end
 
 

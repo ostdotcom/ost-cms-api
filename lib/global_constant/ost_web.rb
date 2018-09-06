@@ -6,11 +6,15 @@ module GlobalConstant
     class << self
 
       def url
-        ost_web['url']
+        @url ||= ost_web['url']
       end
 
       def sha256_salt
-        ost_web['sha256_salt']
+        @sha256_salt ||= ost_web['sha256_salt']
+      end
+
+      def supported_image_type
+        @supported_image_types ||=  ost_web['supported_image_types'].split(' ')
       end
 
       private

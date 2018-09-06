@@ -21,11 +21,11 @@ module GlobalConstant
       end
 
       def image_upload_path
-        GlobalConstant::Base.aws_credentials[:image_upload_path]
+        (Rails.env.production? ? "" : "#{Rails.env.to_s}_") + "ost/images/"
       end
 
       def json_file_upload_path
-        GlobalConstant::Base.aws_credentials[:json_file_upload_path]
+        (Rails.env.production? ? "" : "#{Rails.env.to_s}_") + "ost/json_files/"
       end
 
     end

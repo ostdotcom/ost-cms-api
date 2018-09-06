@@ -22,8 +22,11 @@ module AwsS3
     private
 
     def validate
-      @supported_content_type = GlobalConstant::Base.supported_image_type
-      @supported_content_type.include?  @params["file_type"]
+      GlobalConstant::OstWeb.supported_image_type.include?(@params["file_type"])
+    end
+
+    def get_s3_path
+
     end
   end
 end
