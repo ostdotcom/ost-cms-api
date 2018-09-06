@@ -19,7 +19,7 @@ module ApiCms
         r = error_with_data(
             'user_not_authenticated',
             'User is not authenticated',
-            '',
+            'User is not authenticated',
             GlobalConstant::ErrorAction.default,
             {},
             {},
