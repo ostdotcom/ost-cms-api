@@ -50,7 +50,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 2
-                :maxlength: 30
+                :maxlength: 50
             :data_key_name: members_list_title
         :members_list_name:
             :data_kind: text
@@ -161,7 +161,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 35
-                :maxlength: 500
+                :maxlength: 550
             :data_key_name: advisors_list_description
 
     :4:
@@ -245,7 +245,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 2
-                :maxlength: 50
+                :maxlength: 80
             :data_key_name: careers_title
 
         :careers_description:
@@ -253,7 +253,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 10
-                :maxlength: 500
+                :maxlength: 700
             :data_key_name: careers_description
 
         :careers_url:
@@ -271,7 +271,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 2
-                :maxlength: 50
+                :maxlength: 80
             :data_key_name: careers_title
 
         :careers_description:
@@ -279,7 +279,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 10
-                :maxlength: 500
+                :maxlength: 700
             :data_key_name: careers_description
 
         :careers_url:
