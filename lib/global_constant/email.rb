@@ -6,7 +6,8 @@ module GlobalConstant
     class << self
 
       def default_from
-        'ostcms.notifier@ost.com'
+        Rails.env.production? ? 'notifier@ost.com ' : 'staging.notifier@ost.com'
+
       end
 
       def default_to
@@ -22,12 +23,7 @@ module GlobalConstant
       end
 
       def is_whitelisted_email?(user_email)
-        if Rails.env.production?
-          whitelisted_users
-          @whitelisted_users.include? user_email
-        else
-          user_email.to_s.end_with?("@ost.com")
-        end
+        Rails.env.production? ? whitelisted_users.include?(user_email) : user_email.to_s.end_with?("@ost.com")
       end
 
     end

@@ -13,7 +13,7 @@ module AwsS3
         return error_with_data('swr', 'Unsupported image type', 'File type is not supported' ,'swr',
                         {})
       end
-      file_name = @params["file_name"] + Time.now.to_i.to_s
+      file_name = @params["file_name"].to_s.parameterize + Time.now.to_i.to_s
       r = Aws::S3Manager.new.get_signed_post_url(GlobalConstant::Aws.image_upload_path + file_name,
                                                  @params["file_type"])
       success_with_data({url: r.url, fields: r.fields})
