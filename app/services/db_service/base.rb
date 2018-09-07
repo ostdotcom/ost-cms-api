@@ -8,8 +8,8 @@ module DbService
       params.delete("action")
       params = clean(params)
       @params = params
-      if @params["entity_id"]
-        @entity = Entity.find_by_id(@params["entity_id"])
+      if @params["entity_name"]
+        @entity = Entity.find_by name: @params["entity_name"]
       end
       @user_id = current_user.present? ? current_user.id : 0
     end
@@ -26,7 +26,7 @@ module DbService
       config= GlobalConstant::ApiConfig.fetch_config
       error_object = {}
       if @entity.present?
-        config["meta"][@entity.id.to_s.to_sym].each do |key, value|
+        config["meta"][@entity.name.to_s.to_sym].each do |key, value|
           if  @params[key.to_s]
             error_object[key] = apply_validations(value[:validations], value[:data_kind], @params[key.to_s])
           else
@@ -49,7 +49,7 @@ module DbService
         return error_with_data(
             'validations_error',
             'Validation Errors',
-            'Validation Errors',
+            '',
               GlobalConstant::ErrorAction.default,
             {},
              error_object,

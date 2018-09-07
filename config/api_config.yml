@@ -1,5 +1,5 @@
 meta:
-    :1:
+    :news_list:
         :news_list_title:
             :data_kind: text
             :validations:
@@ -44,7 +44,7 @@ meta:
             :validations:
                 :required: false
             :data_key_name: news_list_video_embed
-    :2:
+    :members_list:
         :members_list_title:
             :data_kind: text
             :validations:
@@ -102,9 +102,7 @@ meta:
                 :minlength: 35
                 :maxlength: 500
             :data_key_name: members_list_description
-
-
-    :3:
+    :advisors_list:
         :advisors_list_title:
             :data_kind: text
             :validations:
@@ -163,12 +161,11 @@ meta:
                 :minlength: 35
                 :maxlength: 550
             :data_key_name: advisors_list_description
-
-    :4:
+    :partners_list:
         :partners_name:
             :data_kind: text
             :validations:
-                :required: false
+                :required: true
                 :minlength: 3
                 :maxlength: 50
         :partners_description:
@@ -237,9 +234,7 @@ meta:
             :validations:
                 :required: false
             :data_key_name: partners_is_exited
-
-
-    :5:
+    :berlin_career_list:
         :careers_title:
             :data_kind: text
             :validations:
@@ -263,9 +258,7 @@ meta:
                 :minlength: 3
                 :maxlength: 2083
             :data_key_name: careers_url
-
-
-    :6:
+    :pune_career_list:
         :careers_title:
             :data_kind: text
             :validations:

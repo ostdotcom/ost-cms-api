@@ -14,18 +14,17 @@ module DbService
     def handle_data
       data = @params
       id = data["id"]
-      entity_id = data["entity_id"]
       prev_id,  next_id = data["prev"],  data["next"]
       entity = EntityDataVersion.find_by_id(id)
       order_weight = entity.order_weight
       prev_entity = EntityDataVersion
                         .where(id: prev_id)
                         .where(status: [0,1])
-                        .where(entity_id: entity_id) if prev_id.present?
+                        .where(entity_id: @entity.id) if prev_id.present?
       next_entity = EntityDataVersion
                         .where(id: next_id)
                         .where(status: [0,1])
-                        .where(entity_id: entity_id) if next_id.present?
+                        .where(entity_id: @entity.id) if next_id.present?
 
 
       if prev_entity.present? && next_entity.present?

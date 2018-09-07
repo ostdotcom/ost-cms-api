@@ -42,7 +42,7 @@ module ApiCms
     end
 
     def get_active_data
-      service_response = DbService::Get.new(params).get_active_by_id
+      service_response = DbService::Get.new(params).get_active
       render_api_response(service_response)
     end
 
