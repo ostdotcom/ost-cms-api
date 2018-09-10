@@ -46,12 +46,12 @@ module DbService
     end
 
     def are_changes_drafted?
-      EntityDataVersion.where(id: @published_record_associations).each do |entity|
+      EntityDataVersion.where(id: @published_record_associations).where(entity_id: @entity.id).each do |entity|
         if entity.status != 1
           return true
         end
       end
-      EntityDataVersion.where.not(id: @published_record_associations).each do |entity|
+      EntityDataVersion.where.not(id: @published_record_associations).where(entity_id: @entity.id).each do |entity|
         if entity.status != 2
           return true
         end
