@@ -15,7 +15,7 @@ module DbService
 
     def handle_rollback
       if get_published_count > 1
-        set_entity_status_from_published_table(get_last_published, 0)
+        set_entity_status_from_published_table(get_last_published, 2)
         get_last_published.destroy
         set_entity_status_from_published_table(get_last_published, 1)
 
