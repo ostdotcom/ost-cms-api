@@ -46,8 +46,18 @@ module DbService
     end
 
     def are_changes_drafted?
-      publish_date = @published_record.updated_at
-      EntityDataVersion.where("updated_at > ?", publish_date).present?
+      EntityDataVersion.where(id: @published_record_associations).each do |entity|
+        if entity.status != 1
+          return true
+        end
+      end
+      EntityDataVersion.where.not(id: @published_record_associations).each do |entity|
+        if entity.status != 2
+          return true
+        end
+      end
+      false
+
     end
 
 
