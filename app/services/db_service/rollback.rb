@@ -57,7 +57,8 @@ module DbService
 
     def get_published_records
       published_record = []
-      get_last_published.associations.each do |record|
+      associations = get_last_published.associations.present? ? get_last_published.associations : []
+      associations.each do |record|
         record = EntityDataVersion.find_by_id(record)
         published_record.push(record.data)
       end
