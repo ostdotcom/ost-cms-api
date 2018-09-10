@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     match '/publish' => :publish_data, via: [:POST]
     match '/sort' => :sort_data, via: [:POST]
     match '/rollback' => :rollback_publish, via: [:POST]
+    match '/reset_to_publish' => :reset_to_publish, via: [:POST]
   end
 
   scope 'api/preview', controller: 'api_rest/preview' do

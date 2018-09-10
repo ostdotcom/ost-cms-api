@@ -61,6 +61,12 @@ module ApiCms
       render_api_response(service_response)
     end
 
+    def reset_to_publish
+      service_response = DbService::ResetToPublish.new(params, @current_user).perform
+      render_api_response(service_response)
+    end
+
+
 
     def get_signed_url
       service_response = AwsS3::GetSignedUrl.new(params).perform
