@@ -14,10 +14,9 @@ module DbService
     private
 
     def handle_data
-      ordered_array, ordered_data_array = [], []
       data = @params
       data.delete("entity_name")
-      if published_record_associations.present? && are_changes_drafted?
+      if published_record_associations.present?
         entities = EntityDataVersion
                        .where(status: 0)
                        .where(entity_id: @entity.id)
@@ -26,12 +25,11 @@ module DbService
         entities.each do |entity|
           entity.status = 2
           entity.save!
-          ordered_array.push(entity.id)
-          ordered_data_array.push(entity.data)
         end
 
         EntityDataVersion.where(id: @published_record_associations).each do |entity|
           entity.status = 1
+          entity.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
           entity.save
         end
         success
@@ -44,22 +42,6 @@ module DbService
       @published_record = PublishedEntityAssociation.where(entity_id: @entity.id).last
       @published_record_associations =  @published_record.present? ? @published_record.associations : []
     end
-
-    def are_changes_drafted?
-      EntityDataVersion.where(id: @published_record_associations).where(entity_id: @entity.id).each do |entity|
-        if entity.status != 1
-          return true
-        end
-      end
-      EntityDataVersion.where.not(id: @published_record_associations).where(entity_id: @entity.id).each do |entity|
-        if entity.status != 2
-          return true
-        end
-      end
-      false
-
-    end
-
 
   end
 end
