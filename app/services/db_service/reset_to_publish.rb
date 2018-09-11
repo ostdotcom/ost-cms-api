@@ -18,7 +18,7 @@ module DbService
       data.delete("entity_name")
       if published_record_associations.present?
         entities = EntityDataVersion
-                       .where(status: 0)
+                       .where(status: [0, 1])
                        .where(entity_id: @entity.id)
                        .order(:order_weight)
 
