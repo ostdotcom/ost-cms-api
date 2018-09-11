@@ -27,7 +27,7 @@ module DbService
           entity.save!
         end
 
-        EntityDataVersion.where(id: @published_record_associations).each do |entity|
+        EntityDataVersion.where(id: @published_record_associations).order("FIELD(id, #{@published_record_associations.reverse.join ', '})").each do |entity|
           entity.status = 1
           entity.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
           entity.save
