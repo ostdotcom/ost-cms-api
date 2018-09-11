@@ -203,7 +203,7 @@ meta:
         :partners_url:
             :data_kind: url
             :validations:
-                :required: true
+                :required: false
                 :minlength: 3
                 :maxlength: 2083
         :partners_twitter:
