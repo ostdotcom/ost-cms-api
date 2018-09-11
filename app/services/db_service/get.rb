@@ -10,7 +10,8 @@ module DbService
     def get_published
       published_list = []
       published_data = PublishedEntityAssociation.where(entity_id: @entity.id).last
-      EntityDataVersion.where(id: published_data.associations).order(:order_weight).each do |entity|
+      associations = published_data.associations
+      EntityDataVersion.where(id: associations).order("FIELD(id, #{associations.join ', '})").each do |entity|
         published_list.push({record: entity.data, id: entity.id})
       end if published_data
       success_with_data({entity_id: @entity.id, list: published_list})
