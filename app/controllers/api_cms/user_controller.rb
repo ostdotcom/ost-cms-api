@@ -14,6 +14,7 @@ module  ApiCms
       if @user.present?
         session[:user_id] = @user.id
         session[:user_state] = User.encrypt_user_state(@user.state)
+        set_session_expiry
         redirect_page = GlobalConstant::Base.cms_api[:auth_success_route]
       else
         redirect_page = GlobalConstant::Base.cms_api[:auth_failure_route]
@@ -42,6 +43,10 @@ module  ApiCms
         filtered_info[item] = user[item]
       end
       filtered_info
+    end
+
+    def set_session_expiry
+      session[:expires_at] = Time.current + 1.hours
     end
   end
 end

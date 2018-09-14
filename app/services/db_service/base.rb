@@ -71,6 +71,17 @@ module DbService
       return error_list
     end
 
+    def has_max_one_record_allowed
+      @entity.configuration == 2
+    end
+
+    def already_data_exist
+      EntityDataVersion
+          .where(status: [0, 1])
+          .where(entity_id: @entity.id)
+          .present?
+    end
+
 
 
     def field_missing_error

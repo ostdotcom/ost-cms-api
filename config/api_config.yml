@@ -1,4 +1,20 @@
 meta:
+
+    :uber_banner:
+        :banner_html:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 130
+            :data_key_name: banner_html
+
+        :banner_background_color:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: banner_background_color
+
     :news_list:
         :news_list_title:
             :data_kind: text

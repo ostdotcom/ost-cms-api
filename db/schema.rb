@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180814114505) do
+ActiveRecord::Schema.define(version: 20180912123054) do
 
   create_table "entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "configuration"
     t.index ["name"], name: "name", unique: true
   end
 
@@ -35,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180814114505) do
   create_table "published_entity_associations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.bigint "user_id", null: false
     t.bigint "entity_id", null: false
-    t.text "associations", null: false
+    t.text "associations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["entity_id"], name: "index_published_entity_associations_on_entity_id"
@@ -49,9 +50,9 @@ ActiveRecord::Schema.define(version: 20180814114505) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "picture", null: false
-    t.string "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["email"], name: "email_UNIQUE", unique: true
   end
 
