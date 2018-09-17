@@ -220,6 +220,9 @@ meta:
             :data_kind: text
             :validations:
                 :required: true
+                :min: 0
+                :max: 30
+                :step: 1
         :partners_url:
             :data_kind: url
             :validations:

@@ -63,7 +63,7 @@ module DbService
     def apply_validations(validations, data_type, input)
       error_list = []
       validations.each do |key, validation|
-        error = public_send(key, validation, input )
+        error = public_send(key, validation, input ) if respond_to? key.to_sym
         error_list.push({key => error }) if error
       end
       data_type_error = public_send(data_type, input)
@@ -125,19 +125,6 @@ module DbService
         return "Date format is not valid"
       end
     end
-
-    def min_bytes(validation, input)
-
-    end
-
-    def max_bytes(validation, input)
-
-    end
-
-    def accept(validation, input)
-
-    end
-
 
   end
 end
