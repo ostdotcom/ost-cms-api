@@ -19,7 +19,7 @@ module DbService
       data = @params
       data.delete("id")
       data.delete("entity_name")
-      if  has_max_one_record_allowed && already_data_exist
+      if  only_one_record_allowed? && data_exists?
         error_with_data("max_one_record_allowed", "","Maximum one record is allowed to add", "", {}, {}, GlobalConstant::ErrorCode.bad_request)
       else
         weight = OrderWeights.new.get_new_record_weight(@entity.id)

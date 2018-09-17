@@ -12,7 +12,7 @@ module DbService
     private
 
     def handle_data
-      if  has_max_one_record_allowed
+      if  only_one_record_allowed?
         error_with_data("sort_not_allowed", "","Sort action is not allowed", "", {}, {})
       else
         data = @params

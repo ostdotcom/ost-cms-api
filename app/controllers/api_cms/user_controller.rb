@@ -44,9 +44,5 @@ module  ApiCms
       end
       filtered_info
     end
-
-    def set_session_expiry
-      session[:expires_at] = Time.current + 1.hours
-    end
   end
 end
