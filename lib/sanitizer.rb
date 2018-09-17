@@ -5,13 +5,11 @@ module Sanitizer
   # @param [Hash] passed_params
   #
   def sanitize_params_recursively(passed_param)
-    puts "sanatize params #{passed_param}"
     if passed_param.is_a? String
       # if the passed_param is a string, sanitize it directly to remove script tags etc
       passed_param = Sanitize.fragment(passed_param.to_s,
                                  Sanitize::Config::RELAXED
       ).gsub("`", "&#x60;")
-      puts "sanatized params #{passed_param}"
     elsif passed_param.is_a?(Hash) || passed_param.is_a?(ActionController::Parameters)
       # if the passed_param is a hash, sanitize the values.
       # we are not sanitizing keys, as not known keys will not be accessed - assumption

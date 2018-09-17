@@ -13,7 +13,7 @@ module DbService
       associations = published_data.present? ? published_data.associations : []
       EntityDataVersion.where(id: associations).order("FIELD(id, #{associations.join ', '})").each do |entity|
         published_list.push({record: entity.data, id: entity.id})
-      end if published_data
+      end if associations.present?
       success_with_data({entity_id: @entity.id, list: published_list})
     end
 
