@@ -14,7 +14,11 @@ meta:
             :validations:
                 :required: true
             :data_key_name: banner_background_color
-
+        :banner_enabled_flag:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: banner_enabled_flag
     :news_list:
         :news_list_title:
             :data_kind: text
