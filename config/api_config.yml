@@ -6,7 +6,7 @@ meta:
             :validations:
                 :required: true
                 :minlength: 5
-                :maxlength: 400
+                :maxlength: 500
             :data_key_name: banner_html
 
         :banner_background_color:
