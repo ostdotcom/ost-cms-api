@@ -8,7 +8,6 @@ meta:
                 :minlength: 5
                 :maxlength: 500
             :data_key_name: banner_html
-
         :banner_background_color:
             :data_kind: text
             :validations:
@@ -19,6 +18,37 @@ meta:
             :validations:
                 :required: true
             :data_key_name: banner_enabled_flag
+    :upcoming_events_list:
+        :event_name:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 40
+            :data_key_name: event_name
+        :event_desc:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 40
+            :data_key_name: event_desc
+        :event_icon:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: event_icon
+        :event_date:
+            :data_kind: text
+            :validations:
+                :required: true
+                :max: 2021-01-01
+            :data_key_name: event_date
+        :event_link:
+            :data_kind: text
+            :validations:
+                :required: true
+            :data_key_name: event_link
     :news_list:
         :news_list_title:
             :data_kind: text
@@ -27,7 +57,6 @@ meta:
                 :minlength: 5
                 :maxlength: 130
             :data_key_name: news_list_title
-            :section: news_list
         :news_list_description:
             :data_kind: text
             :validations:
@@ -35,7 +64,6 @@ meta:
                 :minlength: 40
                 :maxlength: 500
             :data_key_name: news_list_description
-            :section: news_list
         :news_list_image:
             :data_kind: text
             :validations:
@@ -44,7 +72,6 @@ meta:
                 :max_bytes: 100000000
                 :accept: image/jpg,image/png,image/jpeg
             :data_key_name: news_list_image
-            :section: news_list
         :news_list_link:
             :data_kind: url
             :validations:
@@ -52,7 +79,6 @@ meta:
                 :minlength: 3
                 :maxlength: 2083
             :data_key_name: news_list_link
-            :section: news_list
         :news_list_link_type:
             :data_kind: text
             :validations:
@@ -63,7 +89,6 @@ meta:
             :validations:
                 :required: true
             :data_key_name: news_list_date
-            :section: news_list
     :members_list:
         :members_list_title:
             :data_kind: text

@@ -5,7 +5,7 @@ export OC_SECRET_KEY_BASE='b1f0ff90cd692556f9740a8e609f88f2f4fc15d9dda9035445a75
 # Database details
 export OCA_DEFAULT_DB_HOST=127.0.0.1
 export OCA_DEFAULT_DB_USER=root
-export OCA_DEFAULT_DB_PASSWORD='root'
+export OCA_DEFAULT_DB_PASSWORD=''
 
 # Base Url
 export OC_BASE_URL='https://cms.developmentost.com'
@@ -21,8 +21,8 @@ export OCA_GOOGLE_AUTH_KEY='1075579052937-tfa52mo9pc3rtpfr5500321l50clju25.apps.
 export OCA_GOOGLE_AUTH_SECRET='RNlmeLP8mMYonNoBw-X8GpvD'
 
 # AWS Credentials
-export OCA_AWS_ACCESS_KEY='AKIAJVUCQSK5GVPO5EDQ'
-export OCA_AWS_SECRET_KEY='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'
+export OCA_AWS_ACCESS_KEY='AKIAI73VG2H6RA2ZFZBA'
+export OCA_AWS_SECRET_KEY='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'
 export OCA_AWS_S3_BUCKET='wa.ost.com'
 export OCA_AWS_REGION='us-east-1'
 
