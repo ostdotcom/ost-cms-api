@@ -23,15 +23,15 @@ meta:
             :data_kind: text
             :validations:
                 :required: true
-                :minlength: 5
-                :maxlength: 70
+                :minlength: 3
+                :maxlength: 40
             :data_key_name: event_name
         :event_desc:
             :data_kind: text
             :validations:
                 :required: true
-                :minlength: 20
-                :maxlength: 100
+                :minlength: 3
+                :maxlength: 40
             :data_key_name: event_desc
         :event_icon:
             :data_kind: text
