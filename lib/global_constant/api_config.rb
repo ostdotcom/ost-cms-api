@@ -17,7 +17,7 @@ module GlobalConstant
           config = YAML.load(template.result(binding))
           entity_config = config["meta"][entity.to_sym]
           entity_info = Entity.find_by_name(entity)
-          {"fields" => entity_config,  "entity_type" => entity_info.configuration, "entity_name" => entity_info.name  }
+          {"fields" => entity_config, "meta" =>  {"entity_type" => entity_info.configuration, "entity_name" => entity_info.name }}
       end
 
     end
