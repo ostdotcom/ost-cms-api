@@ -246,7 +246,7 @@ meta:
             :validations:
                 :required: true
                 :min: 0
-                :max: 30
+                :max: 40
                 :step: 1
         :partners_url:
             :data_kind: url
