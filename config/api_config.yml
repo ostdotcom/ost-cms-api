@@ -206,6 +206,51 @@ meta:
                 :minlength: 36
                 :maxlength: 549
             :data_key_name: advisors_list_description
+    :partners_sprite:
+        :partners_bw_1x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :partners_bw_1x_item_height:
+            :data_kind: text
+            :validations:
+                :required: true
+        :partners_bw_2x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :partners_bw_2x_item_height:
+            :data_kind: text
+            :validations:
+                :required: true
+        :partners_color_1x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :partners_color_1x_item_height:
+            :data_kind: text
+            :validations:
+                :required: true
+        :partners_color_2x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :partners_color_2x_item_height:
+            :data_kind: text
+            :validations:
+                :required: true
     :partners_list:
         :partners_name:
             :data_kind: text
