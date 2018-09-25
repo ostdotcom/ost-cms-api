@@ -3,7 +3,9 @@ module ApiCms
     before_action :user_auth
 
     def read_yml_config
-      response = success_with_data(GlobalConstant::ApiConfig.fetch_config)
+
+      response = success_with_data(GlobalConstant::ApiConfig.fetch_entity_config(params["entity"]))
+      puts "paramsssshehebhehehe #{response.inspect}"
       render_api_response(response)
     end
 
