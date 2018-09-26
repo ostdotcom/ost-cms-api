@@ -89,6 +89,50 @@ meta:
             :validations:
                 :required: true
             :data_key_name: news_list_date
+
+    :exchanges_sprite:
+        :exchanges_1x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :exchanges_2x:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min_bytes: 1000
+                :max_bytes: 40000000
+                :accept: image/jpg,image/png,image/jpeg
+        :exchanges_blocks_in_sprite:
+            :data_kind: text
+            :validations:
+                :required: true
+
+    :exchanges_list:
+        :exchanges_name:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 2
+                :maxlength: 30
+            :data_key_name: exchange_list_name
+        :exchanges_list_link:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: exchange_list_link
+        :exchanges_sprite_index:
+            :data_kind: text
+            :validations:
+                :required: true
+                :min: 0
+                :max: 40
+                :step: 1
+
     :members_list:
         :members_list_title:
             :data_kind: text
