@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919110310) do
+ActiveRecord::Schema.define(version: 20180921054419) do
 
   create_table "entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
+    t.integer "configuration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "configuration"
     t.index ["name"], name: "name", unique: true
   end
 
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20180919110310) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "picture", null: false
+    t.string "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state"
     t.index ["email"], name: "email_UNIQUE", unique: true
   end
 
