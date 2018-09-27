@@ -39,6 +39,7 @@ module DbService
         end
         entity.order_weight = order_weight
         entity.save!
+        change_draft_status(true)
         success
       end
 

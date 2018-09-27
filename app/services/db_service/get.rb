@@ -67,5 +67,14 @@ module DbService
       end
     end
 
+
+    def get_draft_status
+      entities = []
+      Entity.find_each  do |entity|
+        entities.push( { entity: entity.name, status: entity.changes_drafted  } )
+      end
+      success_with_data(entities)
+    end
+
   end
 end

@@ -32,6 +32,7 @@ module DbService
           entity.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
           entity.save
         end
+        change_draft_status(false)
         success
       else
         error_with_data("no_published_data", "", "Nothing to reset","",{},{}, http_code = GlobalConstant::ErrorCode.bad_request )

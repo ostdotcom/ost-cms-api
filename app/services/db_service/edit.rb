@@ -21,6 +21,7 @@ module DbService
       data.delete("id")
       data.delete("entity_name")
       created_record = EntityDataVersion.create!(data: data, order_weight: @copied_entity[:order_weight], entity_id: @copied_entity[:entity_id], status: 0,  user_id: @user_id)
+      change_draft_status(true)
       success_with_data(created_record.data)
     end
 

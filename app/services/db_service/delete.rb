@@ -17,6 +17,7 @@ module DbService
       entity_to_delete = EntityDataVersion.find_by_id(@params["id"])
       entity_to_delete.status = 2
       entity_to_delete.save!
+      change_draft_status(true)
       success
     end
 

@@ -79,5 +79,10 @@ module ApiCms
       render_api_response(service_response)
     end
 
+    def draft_status
+      service_response = DbService::Get.new(params).get_draft_status
+      render_api_response(service_response)
+    end
+
   end
 end

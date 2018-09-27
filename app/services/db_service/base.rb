@@ -126,5 +126,12 @@ module DbService
       end
     end
 
+
+    # changes status of entity i.e. draft or published
+    def change_draft_status(status)
+      @entity.changes_drafted  = status
+      @entity.save!
+    end
+
   end
 end

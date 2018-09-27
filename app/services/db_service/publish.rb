@@ -32,6 +32,7 @@ module DbService
       Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + @entity.name + '.json', json_data,
                                GlobalConstant::Aws.bucket, "application/json; charset=utf-8")
       PublishedEntityAssociation.create!(associations: ordered_array, entity_id: @entity.id, user_id: @user_id)
+      change_draft_status(false)
       success
     end
 
