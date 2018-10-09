@@ -67,8 +67,6 @@ module ApiCms
       render_api_response(service_response)
     end
 
-
-
     def get_signed_url
       service_response = AwsS3::GetSignedUrl.new(params).perform
       render_api_response(service_response)
@@ -79,8 +77,8 @@ module ApiCms
       render_api_response(service_response)
     end
 
-    def draft_status
-      service_response = DbService::Get.new(params).get_draft_status
+    def entity_status
+      service_response = DbService::Get.new(params).get_entity_status
       render_api_response(service_response)
     end
 

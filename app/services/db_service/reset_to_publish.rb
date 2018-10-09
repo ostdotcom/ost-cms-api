@@ -16,7 +16,7 @@ module DbService
     def handle_data
       data = @params
       data.delete("entity_name")
-      if published_record_associations.present?
+      if published_record_associations.present? && @entity.status != 2
         entities = EntityDataVersion
                        .where(status: [0, 1])
                        .where(entity_id: @entity.id)
@@ -32,7 +32,7 @@ module DbService
           entity.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
           entity.save
         end
-        change_draft_status(false)
+        change_entity_status(2)
         success
       else
         error_with_data("no_published_data", "", "Nothing to reset","",{},{}, http_code = GlobalConstant::ErrorCode.bad_request )

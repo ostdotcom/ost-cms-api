@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180927115554) do
   create_table "entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
     t.integer "configuration"
-    t.boolean "changes_drafted", default: false
+    t.integer "status", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "name", unique: true
