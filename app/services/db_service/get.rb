@@ -39,7 +39,7 @@ module DbService
       active_list = []
       data = @params
       entities = EntityDataVersion
-                     .where(status: [0, 1])
+                     .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
                      .where(entity_id: @entity.id)
                      .order(:order_weight)
       entities.each do |entity|

@@ -33,8 +33,8 @@ module WebPreview
 
     def set_entity_status_to_preview
       Entity.where(name: @previewed_entities).each do | entity |
-        if entity.status == "draft"
-          entity.status = :previewed
+        if entity.status == GlobalConstant::Models::Entity.draft
+          entity.status = GlobalConstant::Models::Entity.previewed
           entity.save
         end
       end

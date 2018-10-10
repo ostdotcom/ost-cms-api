@@ -15,9 +15,9 @@ module DbService
 
     def handle_rollback
       if get_published_count > 1
-        set_entity_status_from_published_table(get_last_published, 2)
+        set_entity_status_from_published_table(get_last_published, GlobalConstant::Models::EntityDataVersion.deleted)
         get_last_published.destroy
-        set_entity_status_from_published_table(get_last_published, 1)
+        set_entity_status_from_published_table(get_last_published, GlobalConstant::Models::EntityDataVersion.active)
 
         get_published_records
 

@@ -15,9 +15,9 @@ module DbService
 
     def handle_data
       entity_to_delete = EntityDataVersion.find_by_id(@params["id"])
-      entity_to_delete.status = 2
+      entity_to_delete.status = GlobalConstant::Models::EntityDataVersion.deleted
       entity_to_delete.save!
-      change_entity_status(:draft)
+      change_entity_status(GlobalConstant::Models::Entity.draft)
       success
     end
 

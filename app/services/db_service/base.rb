@@ -77,7 +77,7 @@ module DbService
 
     def data_exists?
       EntityDataVersion
-          .where(status: [0, 1])
+          .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
           .where(entity_id: @entity.id)
           .present?
     end
@@ -127,11 +127,13 @@ module DbService
     end
 
 
-    # changes status of entity i.e. draft(1) or published(2) or previewed(3)
+    # changes status of entity i.e. draft(0) or published(1) or previewed(2)
     def change_entity_status(status)
       if @entity.present?
         @entity.status  = status
         @entity.save!
+      else
+        raise "Entity not defined."
       end
     end
 
