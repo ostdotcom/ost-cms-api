@@ -18,6 +18,7 @@ module DbService
       data = @params
       data.delete("entity_name")
       entity_status = @entity.status
+      published_entity_association_count = PublishedEntityAssociation.where(entity_id: @entity.id).count
       if entity_status == GlobalConstant::Models::Entity.previewed
         entity_data_versions = EntityDataVersion
                        .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
@@ -36,7 +37,7 @@ module DbService
         PublishedEntityAssociation.create!(associations: ordered_array, entity_id: @entity.id, user_id: @user_id)
         change_entity_status(GlobalConstant::Models::Entity.published)
         return success
-      elsif entity_status == GlobalConstant::Models::Entity.published
+      elsif entity_status == GlobalConstant::Models::Entity.published || (entity_status == GlobalConstant::Models::Entity.draft && published_entity_association_count == 0)
         return error_with_data('nothing_to_publish', '', 'There is nothing to publish', '',{}, {}, GlobalConstant::ErrorCode.bad_request)
       elsif entity_status == GlobalConstant::Models::Entity.draft
         return error_with_data('preview_before_publish', '', 'Please Preview the changes before publishing', '',{}, {}, GlobalConstant::ErrorCode.bad_request)
