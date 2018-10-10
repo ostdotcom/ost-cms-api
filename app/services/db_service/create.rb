@@ -24,7 +24,7 @@ module DbService
       else
         weight = OrderWeights.new.get_new_record_weight(@entity.id)
         created_record = EntityDataVersion.create!(data: data, order_weight: weight, entity_id: @entity.id, status: 0, user_id: @user_id)
-        change_entity_status(1)
+        change_entity_status(:draft)
         success_with_data(created_record.data)
 
       end

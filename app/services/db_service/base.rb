@@ -129,8 +129,10 @@ module DbService
 
     # changes status of entity i.e. draft(1) or published(2) or previewed(3)
     def change_entity_status(status)
-      @entity.status  = status
-      @entity.save!
+      if @entity.present?
+        @entity.status  = status
+        @entity.save!
+      end
     end
 
   end

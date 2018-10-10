@@ -18,27 +18,27 @@ module DbService
       data = @params
       data.delete("entity_name")
       entity_status = @entity.status
-      if entity_status == 3
+      if entity_status == "previewed"
         entities = EntityDataVersion
                        .where(status: [0,1])
                        .where(entity_id: @entity.id)
                        .order(:order_weight)
 
-        entities.each do |entity|
-          entity.status = 1
-          entity.save!
-          ordered_array.push(entity.id)
-          ordered_data_array.push(entity.data)
+        entities.each do |edv|
+          edv.status = 1
+          edv.save!
+          ordered_array.push(edv.id)
+          ordered_data_array.push(edv.data)
         end
         json_data = JSON:: dump ordered_data_array
         Aws::S3Manager.new.store(GlobalConstant::Aws.json_file_upload_path + @entity.name + '.json', json_data,
                                  GlobalConstant::Aws.bucket, "application/json; charset=utf-8")
         PublishedEntityAssociation.create!(associations: ordered_array, entity_id: @entity.id, user_id: @user_id)
-        change_entity_status(2)
+        change_entity_status(:published)
         return success
-      elsif entity_status == 2
+      elsif entity_status == "published"
         return error_with_data('nothing_to_publish', '', 'There is nothing to publish', '',{}, {}, GlobalConstant::ErrorCode.bad_request)
-      elsif entity_status == 1
+      elsif entity_status == "draft"
         return error_with_data('preview_before_publish', '', 'Please Preview the changes before publishing', '',{}, {}, GlobalConstant::ErrorCode.bad_request)
       end
   end
