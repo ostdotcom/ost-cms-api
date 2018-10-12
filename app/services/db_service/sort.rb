@@ -22,11 +22,11 @@ module DbService
         order_weight = entity.order_weight
         prev_entity = EntityDataVersion
                           .where(id: prev_id)
-                          .where(status: [0,1])
+                          .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
                           .where(entity_id: @entity.id) if prev_id.present?
         next_entity = EntityDataVersion
                           .where(id: next_id)
-                          .where(status: [0,1])
+                          .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
                           .where(entity_id: @entity.id) if next_id.present?
 
 
@@ -39,6 +39,7 @@ module DbService
         end
         entity.order_weight = order_weight
         entity.save!
+        change_entity_status(GlobalConstant::Models::Entity.draft)
         success
       end
 

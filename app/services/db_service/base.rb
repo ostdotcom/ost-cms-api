@@ -77,7 +77,7 @@ module DbService
 
     def data_exists?
       EntityDataVersion
-          .where(status: [0, 1])
+          .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
           .where(entity_id: @entity.id)
           .present?
     end
@@ -123,6 +123,17 @@ module DbService
       pattern = /\d{4}-\d{1,2}-\d{1,2}$/
       if input.length > 0 && (input =~ pattern) == nil
         return "Date format is not valid"
+      end
+    end
+
+
+    # changes status of entity i.e. draft(0) or published(1) or previewed(2)
+    def change_entity_status(status)
+      if @entity.present?
+        @entity.status  = status
+        @entity.save!
+      else
+        raise "Entity not defined."
       end
     end
 

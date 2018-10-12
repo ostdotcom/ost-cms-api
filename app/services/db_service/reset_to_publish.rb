@@ -16,22 +16,23 @@ module DbService
     def handle_data
       data = @params
       data.delete("entity_name")
-      if published_record_associations.present?
+      if published_record_associations.present? && @entity.present? && @entity.status != GlobalConstant::Models::Entity.published
         entities = EntityDataVersion
-                       .where(status: [0, 1])
+                       .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
                        .where(entity_id: @entity.id)
                        .order(:order_weight)
 
-        entities.each do |entity|
-          entity.status = 2
-          entity.save!
+        entities.each do |edv|
+          edv.status = GlobalConstant::Models::EntityDataVersion.deleted
+          edv.save!
         end
 
-        EntityDataVersion.where(id: @published_record_associations).order("FIELD(id, #{@published_record_associations.reverse.join ', '})").each do |entity|
-          entity.status = 1
-          entity.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
-          entity.save
+        EntityDataVersion.where(id: @published_record_associations).order("FIELD(id, #{@published_record_associations.reverse.join ', '})").each do |edv|
+          edv.status = GlobalConstant::Models::EntityDataVersion.active
+          edv.order_weight = OrderWeights.new.get_new_record_weight(@entity.id)
+          edv.save
         end
+        change_entity_status(GlobalConstant::Models::Entity.published)
         success
       else
         error_with_data("no_published_data", "", "Nothing to reset","",{},{}, http_code = GlobalConstant::ErrorCode.bad_request )

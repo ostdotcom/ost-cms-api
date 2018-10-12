@@ -39,7 +39,7 @@ module DbService
       active_list = []
       data = @params
       entities = EntityDataVersion
-                     .where(status: [0, 1])
+                     .where(status: [GlobalConstant::Models::EntityDataVersion.draft, GlobalConstant::Models::EntityDataVersion.active])
                      .where(entity_id: @entity.id)
                      .order(:order_weight)
       entities.each do |entity|
@@ -65,6 +65,18 @@ module DbService
             GlobalConstant::ErrorCode.bad_request
         )
       end
+    end
+
+
+    def get_entity_status
+      entities = []
+      Entity.find_each  do |entity|
+        last_published = PublishedEntityAssociation.where(entity_id: entity.id).last
+        last_publish_ts = last_published.updated_at
+        user = User.find_by_id(last_published.user_id)
+        entities.push( { entity: entity.name, status: entity.status, last_publisher: "#{user.first_name} #{user.last_name}"  , last_publish_ts: last_publish_ts   } )
+      end
+      success_with_data({entities: entities})
     end
 
   end

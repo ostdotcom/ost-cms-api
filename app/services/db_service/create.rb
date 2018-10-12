@@ -23,7 +23,8 @@ module DbService
         error_with_data("max_one_record_allowed", "","Maximum one record is allowed to add", "", {}, {}, GlobalConstant::ErrorCode.bad_request)
       else
         weight = OrderWeights.new.get_new_record_weight(@entity.id)
-        created_record = EntityDataVersion.create!(data: data, order_weight: weight, entity_id: @entity.id, status: 0, user_id: @user_id)
+        created_record = EntityDataVersion.create!(data: data, order_weight: weight, entity_id: @entity.id, status: GlobalConstant::Models::EntityDataVersion.draft, user_id: @user_id)
+        change_entity_status(GlobalConstant::Models::Entity.draft)
         success_with_data(created_record.data)
 
       end

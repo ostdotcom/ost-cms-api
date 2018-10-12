@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   scope 'api/content', controller: 'api_cms/content' do
 
     # GET requests
-    match '/entity_data' => :entity_data, via: [:GET]
     match '/configs' => :read_yml_config, via: [:GET]
     match '/configs/app' => :get_app_config, via: [:GET]
     match '/active' => :get_active_data, via: [:GET]
     match '/record' => :get_record, via: [:GET]
-    match '/get_signed_url' => :get_signed_url, via: [:GET]
-    match '/get_preview_url' => :get_preview_signed_url, via: [:GET]
+    match '/get-signed-url' => :get_signed_url, via: [:GET]
+    match '/get-preview-url' => :get_preview_signed_url, via: [:GET]
     match '/published' => :get_published_data, via: [:GET]
+    match '/entity-status' => :entity_status, via: [:GET]
 
     # POST requests
     match '/create' => :create_data, via: [:POST]
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     match '/publish' => :publish_data, via: [:POST]
     match '/sort' => :sort_data, via: [:POST]
     match '/rollback' => :rollback_publish, via: [:POST]
-    match '/reset_to_publish' => :reset_to_publish, via: [:POST]
+    match '/reset-to-publish' => :reset_to_publish, via: [:POST]
   end
 
   scope 'api/preview', controller: 'api_rest/preview' do

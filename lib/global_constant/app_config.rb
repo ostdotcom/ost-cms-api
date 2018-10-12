@@ -12,6 +12,10 @@ module GlobalConstant
         end
       end
 
+      def new_entity_order_weight
+        100000000000000000000000.0
+      end
+
     end
 
   end
