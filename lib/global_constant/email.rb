@@ -14,6 +14,10 @@ module GlobalConstant
         ['mayur@ost.com', 'akshay@ost.com', 'preshita@ost.com', 'backend.team@ost.com']
       end
 
+      def order_weight_watchers
+        ['mayur@ost.com', 'akshay@ost.com']
+      end
+
       def subject_prefix
         "OCA #{Rails.env} : "
       end

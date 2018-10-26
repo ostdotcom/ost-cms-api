@@ -16,6 +16,10 @@ module GlobalConstant
         100000000000000000000000.0
       end
 
+      def threshold_order_weight
+        1000.0
+      end
+
     end
 
   end
