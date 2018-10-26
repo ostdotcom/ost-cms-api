@@ -365,6 +365,82 @@ meta:
                 :maxlength: 2083
             :data_key_name: careers_url
 
+    :new_york_career_list:
+        :careers_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 2
+                :maxlength: 80
+            :data_key_name: careers_title
+
+        :careers_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 700
+            :data_key_name: careers_description
+
+        :careers_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: careers_url
+
+    :hongkong_career_list:
+        :careers_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 2
+                :maxlength: 80
+            :data_key_name: careers_title
+
+        :careers_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 700
+            :data_key_name: careers_description
+
+        :careers_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: careers_url
+
+
+    :europe_career_list:
+        :careers_title:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 2
+                :maxlength: 80
+            :data_key_name: careers_title
+
+        :careers_description:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 10
+                :maxlength: 700
+            :data_key_name: careers_description
+
+        :careers_url:
+            :data_kind: url
+            :validations:
+                :required: true
+                :minlength: 3
+                :maxlength: 2083
+            :data_key_name: careers_url
+
 
 
 

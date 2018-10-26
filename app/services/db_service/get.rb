@@ -72,9 +72,10 @@ module DbService
       entities = []
       Entity.find_each  do |entity|
         last_published = PublishedEntityAssociation.where(entity_id: entity.id).last
-        last_publish_ts = last_published.updated_at
-        user = User.find_by_id(last_published.user_id)
-        entities.push( { entity: entity.name, status: entity.status, last_publisher: "#{user.first_name} #{user.last_name}"  , last_publish_ts: last_publish_ts   } )
+        last_publish_ts = last_published.present? ? last_published.updated_at : ''
+        user = last_published.present? ?   User.find_by_id(last_published.user_id) : ''
+        user = user.present? ? "#{user.first_name} #{user.last_name}" : ""
+        entities.push( { entity: entity.name, status: entity.status, last_publisher: user   , last_publish_ts: last_publish_ts   } )
       end
       success_with_data({entities: entities})
     end
