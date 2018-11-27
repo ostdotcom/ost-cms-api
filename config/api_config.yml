@@ -71,6 +71,14 @@ meta:
                     :max_bytes: 100000000
                     :accept: image/jpg,image/png,image/jpeg
                 :data_key_name: jumbotron_image
+            :jumbotron_image_mobile:
+                :data_kind: text
+                :validations:
+                    :required: true
+                    :min_bytes: 1000
+                    :max_bytes: 100000000
+                    :accept: image/jpg,image/png,image/jpeg
+                :data_key_name: jumbotron_image_mobile
             :jumbotron_video_link:
                 :data_kind: text
                 :validations:
