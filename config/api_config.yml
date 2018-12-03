@@ -24,7 +24,7 @@ meta:
                 :validations:
                     :required: true
                     :minlength: 5
-                    :maxlength: 40
+                    :maxlength: 50
                 :data_key_name: jumbotron_title
             :jumbotron_description:
                 :data_kind: text
