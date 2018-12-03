@@ -6,8 +6,15 @@ meta:
             :validations:
                 :required: true
                 :minlength: 5
-                :maxlength: 500
+                :maxlength: 130
             :data_key_name: banner_html
+        :banner_html_mobile:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 30
+            :data_key_name: banner_html_mobile
         :banner_background_color:
             :data_kind: text
             :validations:
