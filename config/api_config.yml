@@ -6,14 +6,14 @@ meta:
             :validations:
                 :required: true
                 :minlength: 5
-                :maxlength: 130
+                :maxlength: 500 #It accommodates actual text plus the html and link chars
             :data_key_name: banner_html
         :banner_html_mobile:
             :data_kind: text
             :validations:
                 :required: true
                 :minlength: 5
-                :maxlength: 30
+                :maxlength: 400 #It accommodates actual text plus the html and link chars
             :data_key_name: banner_html_mobile
         :banner_background_color:
             :data_kind: text
