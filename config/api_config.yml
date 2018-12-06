@@ -6,8 +6,15 @@ meta:
             :validations:
                 :required: true
                 :minlength: 5
-                :maxlength: 500
+                :maxlength: 500 #It accommodates actual text plus the html and link chars
             :data_key_name: banner_html
+        :banner_html_mobile:
+            :data_kind: text
+            :validations:
+                :required: true
+                :minlength: 5
+                :maxlength: 400 #It accommodates actual text plus the html and link chars
+            :data_key_name: banner_html_mobile
         :banner_background_color:
             :data_kind: text
             :validations:
@@ -18,6 +25,72 @@ meta:
             :validations:
                 :required: true
             :data_key_name: banner_enabled_flag
+    :home_page_jumbotron:
+            :jumbotron_title:
+                :data_kind: text
+                :validations:
+                    :required: true
+                    :minlength: 5
+                    :maxlength: 65
+                :data_key_name: jumbotron_title
+            :jumbotron_description:
+                :data_kind: text
+                :validations:
+                    :required: true
+                    :minlength: 40
+                    :maxlength: 500
+                :data_key_name: jumbotron_description
+            :primary_btn_title:
+                :data_kind: text
+                :validations:
+                    :required: true
+                :data_key_name: primary_btn_title
+            :sec_btn_title:
+                :data_kind: text
+                :validations:
+                    :required: false
+                :data_key_name: sec_btn_title
+            :primary_btn_link:
+                :data_kind: text
+                :validations:
+                    :required: true
+                :data_key_name: primary_btn_link
+            :sec_btn_link:
+                :data_kind: text
+                :validations:
+                    :required: false
+                :data_key_name: sec_btn_link
+            :primary_btn_enabled_flag:
+                :data_kind: text
+                :validations:
+                    :required: true
+                :data_key_name: primary_btn_enabled_flag
+            :sec_btn_enabled_flag:
+                :data_kind: text
+                :validations:
+                    :required: true
+                :data_key_name: sec_btn_enabled_flag
+            :jumbotron_image:
+                :data_kind: text
+                :validations:
+                    :required: true
+                    :min_bytes: 1000
+                    :max_bytes: 100000000
+                    :accept: image/jpg,image/png,image/jpeg
+                :data_key_name: jumbotron_image
+            :jumbotron_image_mobile:
+                :data_kind: text
+                :validations:
+                    :required: true
+                    :min_bytes: 1000
+                    :max_bytes: 100000000
+                    :accept: image/jpg,image/png,image/jpeg
+                :data_key_name: jumbotron_image_mobile
+            :jumbotron_video_link:
+                :data_kind: text
+                :validations:
+                    :required: true
+                :data_key_name: jumbotron_video_link
     :upcoming_events_list:
         :event_name:
             :data_kind: text
