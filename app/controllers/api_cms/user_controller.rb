@@ -7,9 +7,16 @@ module  ApiCms
       # some logic to check whitelist
       auth = request.env["omniauth.auth"] || {}
       auth.info = auth.info || {}
+      auth.extra = auth.extra || {}
+      auth.extra.id_info = auth.extra.id_info || {}
       state = params["state"]
 
-      @user = User.find_or_create_from_auth_hash(auth, state) if GlobalConstant::Email.is_whitelisted_email?(auth.info.email)
+      user_email = auth.info.email || auth.extra.id_info.email
+      auth.info.email = user_email
+
+      logger.info "user email fetched from google oauth: "+user_email
+
+      @user = User.find_or_create_from_auth_hash(auth, state) if GlobalConstant::Email.is_whitelisted_email?(user_email)
 
       if @user.present?
         session[:user_id] = @user.id
