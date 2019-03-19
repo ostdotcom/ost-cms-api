@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     match '/reset-to-publish' => :reset_to_publish, via: [:POST]
   end
 
-  scope 'api/preview', controller: 'api_rest/preview', :format => false do
+  scope 'api/preview', controller: 'api_rest/preview' do
     match '/:entity' => :get_data, via: [:GET]
   end
 
