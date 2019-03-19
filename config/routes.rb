@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  scope 'auth', controller: 'api_cms/user' do
+  scope 'auth', controller: 'api_cms/user', :format => false do
     match '/:provider/callback' => :signin, as: 'signin',  via: [:GET]
     match '/logout' => :logout, as: 'logout', via: [:GET]
     match '/user' => :profile, as: 'profile', via: [:GET]
   end
 
-  scope 'api/content', controller: 'api_cms/content' do
+  scope 'api/content', controller: 'api_cms/content', :format => false do
 
     # GET requests
     match '/configs' => :read_yml_config, via: [:GET]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     match '/reset-to-publish' => :reset_to_publish, via: [:POST]
   end
 
-  scope 'api/preview', controller: 'api_rest/preview' do
+  scope 'api/preview', controller: 'api_rest/preview', :format => false do
     match '/:entity' => :get_data, via: [:GET]
   end
 
